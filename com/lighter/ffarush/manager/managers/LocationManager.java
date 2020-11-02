@@ -55,6 +55,7 @@ public final class LocationManager extends Manager {
         if (section != null) {
             for (final String locationID : section.getKeys(false)) {
                 final Location location = Serialize.deserializeLocation(section.getString(locationID));
+
                 this.locationMap.put(locationID, location);
                 this.location++;
             }

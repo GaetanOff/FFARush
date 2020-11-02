@@ -53,6 +53,7 @@ public final class EditorInventory implements GuiBuilder {
                     player.getInventory().setContents(this.ffaRushPlugin.getManagerHandler().getItemManager().getMainContents());
                 else
                     player.getInventory().setContents(playerData.getCustomKit());
+
                 Message.tell(player, Message.GREEN + "Loaded successfully.");
                 break;
             }

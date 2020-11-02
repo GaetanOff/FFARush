@@ -30,7 +30,6 @@ public final class PlayerData {
 
         this.player = player;
         this.playerState = null;
-
         this.customKit = null;
     }
 

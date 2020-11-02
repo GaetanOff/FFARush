@@ -14,7 +14,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 
 import java.util.List;
 
@@ -71,7 +70,7 @@ public final class ItemManager extends Manager {
     }
 
     private void clearInventory(final Player player) {
-        for (final PotionEffect potion : player.getActivePotionEffects()) player.removePotionEffect(potion.getType());
+        player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
         player.setGameMode(GameMode.SURVIVAL);
         player.setMaximumNoDamageTicks(20);
         player.setFoodLevel(20);

@@ -39,14 +39,14 @@ public final class SpawnCommand {
     }
 
     @Command(name = "ffarush.setkiteditor")
-    public void handleCommandChild25(final Context<ConsoleCommandSender> context) {
+    public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setKitEditorLocation(player.getLocation());
         Message.tell(player, Message.GREEN + "Kit Editor sucessfully set.");
     }
 
     @Command(name = "ffarush.setinventory")
-    public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
+    public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() != PlayerState.BUILDING) {
@@ -59,7 +59,7 @@ public final class SpawnCommand {
     }
 
     @Command(name = "ffarush.builder")
-    public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
+    public void handleCommandChild5(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() == PlayerState.BUILDING) {

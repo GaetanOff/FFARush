@@ -7,17 +7,20 @@ import com.lighter.ffarush.manager.managers.BlockManager;
 import com.lighter.ffarush.manager.managers.ItemManager;
 import com.lighter.ffarush.manager.managers.LocationManager;
 import com.lighter.ffarush.manager.managers.SpawnKillManager;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 
+@FieldDefaults(level= AccessLevel.PRIVATE)
 @Getter
 public class ManagerHandler {
-    private final FFARushPlugin ffaRushPlugin;
-    private final ItemManager itemManager;
-    private final BlockManager blockManager;
-    private final LocationManager locationManager;
-    private final SpawnKillManager spawnKillManager;
+    final FFARushPlugin ffaRushPlugin;
+    final ItemManager itemManager;
+    final BlockManager blockManager;
+    final LocationManager locationManager;
+    final SpawnKillManager spawnKillManager;
 
-    private final GuiManager guiManager;
+    final GuiManager guiManager;
 
     public ManagerHandler(final FFARushPlugin ffaRushPlugin) {
         this.ffaRushPlugin = ffaRushPlugin;

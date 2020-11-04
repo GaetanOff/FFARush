@@ -180,13 +180,8 @@ public class PlayerListener implements Listener {
         if (playerData.getPlayerState() == PlayerState.BUILDING)
             return;
 
-        if ((playerData.getPlayerState() == PlayerState.FIGHTING || playerData.getPlayerState() == PlayerState.SPAWNING) && (block.getType() == Material.SANDSTONE || block.getType() == Material.TNT)) {
-
-            if (player.getLocation().getY() > 80)
-                event.setCancelled(true);
-
+        if ((playerData.getPlayerState() == PlayerState.FIGHTING || playerData.getPlayerState() == PlayerState.SPAWNING) && (block.getType() == Material.SANDSTONE || block.getType() == Material.TNT) && player.getLocation().getY() < 80) {
             this.ffaRushPlugin.getManagerHandler().getBlockManager().addBlock(block);
-
             if (block.getType() == Material.SANDSTONE)
                 player.getInventory().getItemInHand().setAmount(64);
 

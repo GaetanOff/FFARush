@@ -78,7 +78,7 @@ public class PlayerListener implements Listener {
                         playerData.spectator();
                         break;
                     }
-                    case REDSTONE: {
+                    case INK_SACK: {
                         EntityHider.showPlayerOnly(player);
                         player.setAllowFlight(false);
                         playerData.inject();

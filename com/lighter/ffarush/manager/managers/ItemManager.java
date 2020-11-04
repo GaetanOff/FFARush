@@ -70,7 +70,7 @@ public final class ItemManager extends Manager {
     }
 
     public void giveSpectatorItem(final Player player) {
-        final ItemStack leave = new ItemBuilder(Material.REDSTONE).setName(Message.RED + "Leave spectator").toItemStack();
+        final ItemStack leave = new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Message.RED + "Leave spectator").toItemStack();
         final ItemStack glass = new ItemBuilder(Material.STAINED_GLASS_PANE).setName(Message.GRAY + Message.ITALIC + "www.prathen.eu").toItemStack();
 
         this.clearInventory(player);

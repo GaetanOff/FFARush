@@ -6,6 +6,4 @@ import lombok.experimental.FieldDefaults;
 
 @FieldDefaults(level= AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Manager {
-    final ManagerHandler handler;
-}
+public class Manager {final ManagerHandler handler;}

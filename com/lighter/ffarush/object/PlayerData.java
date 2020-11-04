@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -100,10 +101,17 @@ public final class PlayerData {
         return this.player.getStatistic(Statistic.PLAYER_KILLS);
     }
 
-    public double getRatio() {
+    public Serializable getRatio() {
         final double ratio = (double) this.getKills() / this.getDeaths();
-        final DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        return Double.parseDouble(decimalFormat.format(ratio));
+        final DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        if (this.getDeaths() != 0 && this.getKills() != 0)
+            return df.format(ratio);
+
+        if (this.getDeaths() == 0)
+            return String.valueOf(this.getKills());
+
+        return "0";
     }
 
     public void save() {

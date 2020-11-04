@@ -19,7 +19,7 @@ import java.util.Map;
 @Setter
 public final class LocationManager extends Manager {
     int location;
-    Location lobbyLocation, kitEditorLocation;
+    Location lobbyLocation, kitEditorLocation, spectatorLocation;
     Map<String, Location> locationMap = new HashMap<>();
 
     public LocationManager(final ManagerHandler handler) {
@@ -28,6 +28,7 @@ public final class LocationManager extends Manager {
         this.location = 0;
         this.lobbyLocation = this.handler.getFfaRushPlugin().getConfig().getString("lobby") == null ? null : Serialize.deserializeLocation(this.handler.getFfaRushPlugin().getConfig().getString("lobby"));
         this.kitEditorLocation = this.handler.getFfaRushPlugin().getConfig().getString("kiteditor") == null ? null : Serialize.deserializeLocation(this.handler.getFfaRushPlugin().getConfig().getString("kiteditor"));
+        this.spectatorLocation = this.handler.getFfaRushPlugin().getConfig().getString("spectator") == null ? null : Serialize.deserializeLocation(this.handler.getFfaRushPlugin().getConfig().getString("spectator"));
 
         this.loadLocation();
     }
@@ -43,6 +44,13 @@ public final class LocationManager extends Manager {
         this.kitEditorLocation = location;
 
         this.handler.getFfaRushPlugin().getConfig().set("kiteditor", Serialize.serializeLocation(location));
+        this.handler.getFfaRushPlugin().saveConfig();
+    }
+
+    public void setSpectatorLocation(final Location location) {
+        this.spectatorLocation = location;
+
+        this.handler.getFfaRushPlugin().getConfig().set("spectator", Serialize.serializeLocation(location));
         this.handler.getFfaRushPlugin().saveConfig();
     }
 

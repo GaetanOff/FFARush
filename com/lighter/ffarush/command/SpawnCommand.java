@@ -51,11 +51,22 @@ public final class SpawnCommand {
     }
 
     /**
+     * Set the spectator location
+     * @param context command argument
+     */
+    @Command(name = "ffarush.setspectator")
+    public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
+        final Player player = (Player) context.getSender();
+        this.ffaRushPlugin.getManagerHandler().getLocationManager().setSpectatorLocation(player.getLocation());
+        Message.tell(player, Message.GREEN + "Spectator sucessfully set.");
+    }
+
+    /**
      * Set the kit editor
      * @param context command argument
      */
     @Command(name = "ffarush.setkiteditor")
-    public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
+    public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setKitEditorLocation(player.getLocation());
         Message.tell(player, Message.GREEN + "Kit Editor sucessfully set.");
@@ -66,7 +77,7 @@ public final class SpawnCommand {
      * @param context command argument
      */
     @Command(name = "ffarush.setinventory")
-    public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
+    public void handleCommandChild5(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() != PlayerState.BUILDING) {
@@ -83,7 +94,7 @@ public final class SpawnCommand {
      * @param context command argument
      */
     @Command(name = "ffarush.builder")
-    public void handleCommandChild5(final Context<ConsoleCommandSender> context) {
+    public void handleCommandChild6(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() == PlayerState.BUILDING) {
@@ -104,6 +115,7 @@ public final class SpawnCommand {
                 Message.GRAY + Message.ITALIC + "Admin Command:",
                 Message.YELLOW + "/ffarush addloc" + Message.GRAY + " - Add a location.",
                 Message.YELLOW + "/ffarush setlobby" + Message.GRAY + " - Set the lobby.",
+                Message.YELLOW + "/ffarush setspectator" + Message.GRAY + " - Set the spectator.",
                 Message.YELLOW + "/ffarush setkiteditor" + Message.GRAY + " - Set the kit editor.",
                 Message.YELLOW + "/ffarush setinventory" + Message.GRAY + " - Modify the kit.",
                 Message.YELLOW + "/ffarush builder" + Message.GRAY + " - Enable builder mode.",

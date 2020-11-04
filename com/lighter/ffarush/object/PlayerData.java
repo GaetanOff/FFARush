@@ -75,7 +75,21 @@ public final class PlayerData {
 
         player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation());
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveKitEditorItem(this.player);
-        EntityHider.hidePlayer(this.player);
+        EntityHider.hidePlayerToEveryone(this.player);
+    }
+
+    public void spectator() {
+        if (this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation() == null) {
+            Message.tell(this.player, Message.RED + "There is no spectator location");
+            return;
+        }
+
+        this.playerState = PlayerState.SPECTATING;
+
+        player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
+        player.setAllowFlight(true);
+        this.ffaRushPlugin.getManagerHandler().getItemManager().giveSpectatorItem(this.player);
+        EntityHider.hidePlayerOnly(this.player);
     }
 
     public int getDeaths() {

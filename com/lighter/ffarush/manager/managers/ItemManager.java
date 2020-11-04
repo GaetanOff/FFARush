@@ -69,6 +69,20 @@ public final class ItemManager extends Manager {
         });
     }
 
+    public void giveSpectatorItem(final Player player) {
+        final ItemStack leave = new ItemBuilder(Material.REDSTONE).setName(Message.RED + "Leave spectator").setUnbreakable().toItemStack();
+        final ItemStack glass = new ItemBuilder(Material.STAINED_GLASS_PANE).setName(Message.GRAY + Message.ITALIC + "www.prathen.eu").toItemStack();
+
+        this.clearInventory(player);
+
+        for (int i = 0; i < 9; i++) player.getInventory().setItem(i, glass);
+
+        TaskUtil.runLater(() -> {
+            player.getInventory().setItem(8, leave);
+            player.getInventory().setHeldItemSlot(8);
+        }, this.handler.getFfaRushPlugin(), 10L);
+    }
+
     public void giveKitEditorItem(final Player player) {
         this.clearInventory(player);
 

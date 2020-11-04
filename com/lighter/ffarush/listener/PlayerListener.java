@@ -61,7 +61,7 @@ public class PlayerListener implements Listener {
         final ItemStack itemStack = event.getItem();
         final Block target = event.getClickedBlock();
         if (itemStack != null) {
-            if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK && itemStack.getItemMeta() != null && itemStack.getItemMeta().getDisplayName() != null) && playerData.getPlayerState() == PlayerState.LOBBY) {
+            if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK && itemStack.getItemMeta() != null && itemStack.getItemMeta().getDisplayName() != null) && (playerData.getPlayerState() == PlayerState.LOBBY || playerData.getPlayerState() == PlayerState.SPECTATING)) {
                 switch (itemStack.getType()) {
                     case DIAMOND_SWORD: {
                         playerData.teleportToFight();
@@ -72,7 +72,13 @@ public class PlayerListener implements Listener {
                         break;
                     }
                     case COMPASS: {
-                        playerData.teleportToKitEditor();
+                        playerData.spectator();
+                        break;
+                    }
+                    case REDSTONE: {
+                        EntityHider.showPlayerOnly(player);
+                        player.setAllowFlight(false);
+                        playerData.inject();
                         break;
                     }
                 }
@@ -96,7 +102,7 @@ public class PlayerListener implements Listener {
                     break;
                 }
                 case WOODEN_DOOR: {
-                    EntityHider.showPlayer(player);
+                    EntityHider.showPlayerToEveryone(player);
                     playerData.inject();
                     break;
                 }

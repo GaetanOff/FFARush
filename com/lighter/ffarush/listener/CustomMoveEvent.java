@@ -22,7 +22,6 @@ public class CustomMoveEvent implements MovementHandler {
 
         if (playerData.getPlayerState() == PlayerState.FIGHTING) {
             if (player.getLocation().getY() < 29) {
-                player.setStatistic(Statistic.DEATHS, player.getStatistic(Statistic.DEATHS) + 1);
                 playerData.inject();
                 if (this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()) != null) {
                     final Player attacker = Bukkit.getPlayer(this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()));
@@ -30,6 +29,7 @@ public class CustomMoveEvent implements MovementHandler {
                     Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + " was void-killed by " + Message.GREEN + attacker.getName() + Message.GRAY + ".");
                     attacker.setStatistic(Statistic.PLAYER_KILLS, attacker.getStatistic(Statistic.PLAYER_KILLS) + 1);
                     attacker.setHealth(20.0);
+                    player.setStatistic(Statistic.DEATHS, player.getStatistic(Statistic.DEATHS) + 1);
                     this.ffaRushPlugin.getVoidPlayers().remove(player.getUniqueId());
                     return;
                 }

@@ -17,11 +17,19 @@ import org.bukkit.entity.Player;
 public final class SpawnCommand {
     private final FFARushPlugin ffaRushPlugin;
 
+    /**
+     * Show the usage message
+     * @param context command argument
+     */
     @Command(name = "ffarush", permission = "ffarush.admin", target = CommandTarget.PLAYER)
     public void handleCommand(final Context<ConsoleCommandSender> context) {
         this.usage((Player) context.getSender());
     }
 
+    /**
+     * Add new a location to the FFARush
+     * @param context command argument
+     */
     @Command(name = "ffarush.addloc")
     public void handleCommandChild(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
@@ -31,6 +39,10 @@ public final class SpawnCommand {
         locationManager.setLocation(locationManager.getLocation() + 1);
     }
 
+    /**
+     * Set the global lobby
+     * @param context command argument
+     */
     @Command(name = "ffarush.setlobby")
     public void handleCommandChild2(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
@@ -38,6 +50,10 @@ public final class SpawnCommand {
         Message.tell(player, Message.GREEN + "Lobby sucessfully set.");
     }
 
+    /**
+     * Set the kit editor
+     * @param context command argument
+     */
     @Command(name = "ffarush.setkiteditor")
     public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
@@ -45,6 +61,10 @@ public final class SpawnCommand {
         Message.tell(player, Message.GREEN + "Kit Editor sucessfully set.");
     }
 
+    /**
+     * Set the kit inventory
+     * @param context command argument
+     */
     @Command(name = "ffarush.setinventory")
     public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
@@ -58,6 +78,10 @@ public final class SpawnCommand {
         Message.tell(player, Message.GREEN + "Inventory updated.");
     }
 
+    /**
+     * Enable or Disable the builder mode
+     * @param context command argument
+     */
     @Command(name = "ffarush.builder")
     public void handleCommandChild5(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();

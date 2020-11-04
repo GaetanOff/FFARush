@@ -37,11 +37,9 @@ public final class PlayerData {
     }
 
     public void inject() {
-        TaskUtil.run(() -> {
-            this.playerState = PlayerState.LOBBY;
-            this.ffaRushPlugin.getManagerHandler().getItemManager().giveDefaultItems(player);
-            this.teleportToLobby();
-        });
+        this.playerState = PlayerState.LOBBY;
+        this.ffaRushPlugin.getManagerHandler().getItemManager().giveDefaultItems(player);
+        this.teleportToLobby();
     }
 
     public void teleportToLobby() {

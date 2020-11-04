@@ -41,9 +41,11 @@ public final class ItemManager extends Manager {
 
         for (int i = 0; i < 9; i++) player.getInventory().setItem(i, glass);
 
-        player.getInventory().setItem(3, epee);
-        player.getInventory().setItem(5, editkit);
-        player.getInventory().setHeldItemSlot(3);
+        TaskUtil.runLater(() -> {
+            player.getInventory().setItem(3, epee);
+            player.getInventory().setItem(5, editkit);
+            player.getInventory().setHeldItemSlot(3);
+        }, this.handler.getFfaRushPlugin(), 20L);
     }
 
     public void giveFightItems(final Player player) {

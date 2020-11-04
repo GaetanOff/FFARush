@@ -35,6 +35,7 @@ public final class ItemManager extends Manager {
     public void giveDefaultItems(final Player player) {
         final ItemStack epee = new ItemBuilder(Material.DIAMOND_SWORD).setName(Message.AQUA + "Join the arena").setUnbreakable().toItemStack();
         final ItemStack editkit = new ItemBuilder(Material.BOOK).setName(Message.AQUA + "Kit Editor").setUnbreakable().toItemStack();
+        final ItemStack spectator = new ItemBuilder(Material.COMPASS).setName(Message.AQUA + "Spectator").setUnbreakable().toItemStack();
         final ItemStack glass = new ItemBuilder(Material.STAINED_GLASS_PANE).setName(Message.GRAY + Message.ITALIC + "www.prathen.eu").toItemStack();
 
         this.clearInventory(player);
@@ -42,9 +43,10 @@ public final class ItemManager extends Manager {
         for (int i = 0; i < 9; i++) player.getInventory().setItem(i, glass);
 
         TaskUtil.runLater(() -> {
-            player.getInventory().setItem(3, epee);
-            player.getInventory().setItem(5, editkit);
-            player.getInventory().setHeldItemSlot(3);
+            player.getInventory().setItem(2, epee);
+            player.getInventory().setItem(4, spectator);
+            player.getInventory().setItem(6, editkit);
+            player.getInventory().setHeldItemSlot(2);
         }, this.handler.getFfaRushPlugin(), 20L);
     }
 

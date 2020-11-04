@@ -71,6 +71,10 @@ public class PlayerListener implements Listener {
                         playerData.teleportToKitEditor();
                         break;
                     }
+                    case COMPASS: {
+                        playerData.teleportToKitEditor();
+                        break;
+                    }
                 }
             }
             if (itemStack.getType() == Material.FLINT_AND_STEEL && event.getAction() == Action.RIGHT_CLICK_BLOCK && target != null && target.getType() == Material.TNT) {
@@ -130,7 +134,7 @@ public class PlayerListener implements Listener {
 
             if (SpawnKillManager.isCooldownActive(damager) || SpawnKillManager.isCooldownActive(player)) {
                 event.setCancelled(true);
-                damager.sendMessage(Message.RED + "You have to wait the end of Anti SpawnKill time.");
+                Message.tell(damager, Message.RED + "You have to wait the end of Anti SpawnKill time.");
             }
         }
     }

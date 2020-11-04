@@ -6,8 +6,10 @@ import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.manager.Manager;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -17,11 +19,12 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
+@FieldDefaults(level= AccessLevel.PRIVATE)
 @Getter
 @Setter
 public final class ItemManager extends Manager {
-    private ItemStack[] mainContents;
-    private ItemStack[] armorContents;
+    ItemStack[] mainContents;
+    ItemStack[] armorContents;
 
     public ItemManager(final ManagerHandler handler) {
         super(handler);

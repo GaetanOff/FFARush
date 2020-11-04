@@ -7,8 +7,10 @@ import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.FFARushPlugin;
 import com.lighter.ffarush.manager.managers.LocationManager;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -17,13 +19,14 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.List;
 
+@FieldDefaults(level= AccessLevel.PRIVATE)
 @Getter
 @Setter
 public final class PlayerData {
-    private FFARushPlugin ffaRushPlugin;
-    private final Player player;
-    private PlayerState playerState;
-    private ItemStack[] customKit;
+    FFARushPlugin ffaRushPlugin;
+    Player player;
+    PlayerState playerState;
+    ItemStack[] customKit;
 
     public PlayerData(final Player player, final FFARushPlugin ffaRushPlugin) {
         this.ffaRushPlugin = ffaRushPlugin;

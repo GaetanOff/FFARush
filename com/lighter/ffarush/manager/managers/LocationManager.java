@@ -3,8 +3,10 @@ package com.lighter.ffarush.manager.managers;
 import com.gaetan.api.serializer.Serialize;
 import com.lighter.ffarush.manager.Manager;
 import com.lighter.ffarush.manager.ManagerHandler;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -12,12 +14,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.HashMap;
 import java.util.Map;
 
+@FieldDefaults(level= AccessLevel.PRIVATE)
 @Getter
 @Setter
 public final class LocationManager extends Manager {
-    private int location;
-    private Location lobbyLocation, kitEditorLocation;
-    private Map<String, Location> locationMap = new HashMap<>();
+    int location;
+    Location lobbyLocation, kitEditorLocation;
+    Map<String, Location> locationMap = new HashMap<>();
 
     public LocationManager(final ManagerHandler handler) {
         super(handler);

@@ -135,13 +135,18 @@ public class PlayerListener implements Listener {
         if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
             final Player player = (Player) event.getEntity();
             final Player damager = (Player) event.getDamager();
-            if (this.getFfaRushPlugin().getPlayer(damager).getPlayerState() == PlayerState.FIGHTING)
+            final PlayerData damagerData = this.getFfaRushPlugin().getPlayer(damager);
+            if (damagerData.getPlayerState() == PlayerState.FIGHTING)
                 this.getFfaRushPlugin().getVoidPlayers().put(player.getUniqueId(), damager.getUniqueId());
 
             if (SpawnKillManager.isCooldownActive(damager) || SpawnKillManager.isCooldownActive(player)) {
                 event.setCancelled(true);
                 Message.tell(damager, Message.RED + "You have to wait the end of Anti SpawnKill time.");
             }
+
+            if (damagerData.getPlayerState() != PlayerState.FIGHTING)
+                event.setCancelled(true);
+            
         }
     }
 

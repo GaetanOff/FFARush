@@ -60,7 +60,6 @@ public final class EditorInventory implements GuiBuilder {
             case REDSTONE: {
                 player.getInventory().clear();
                 player.updateInventory();
-
                 player.getInventory().setContents(this.ffaRushPlugin.getManagerHandler().getItemManager().getMainContents());
                 playerData.setCustomKit(null);
                 Message.tell(player, Message.RED + "Reset successfully.");

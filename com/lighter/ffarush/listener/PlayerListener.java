@@ -115,7 +115,9 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(final InventoryClickEvent event) {
-        if (this.getFfaRushPlugin().getPlayer((Player) event.getWhoClicked()).getPlayerState() == PlayerState.LOBBY)
+        final PlayerData playerData = this.getFfaRushPlugin().getPlayer((Player) event.getWhoClicked());
+
+        if (playerData.getPlayerState() == PlayerState.LOBBY || playerData.getPlayerState() == PlayerState.SPECTATING)
             event.setCancelled(true);
     }
 

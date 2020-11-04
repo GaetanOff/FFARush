@@ -67,4 +67,8 @@ public final class EditorInventory implements GuiBuilder {
             }
         }
     }
+
+    @Override
+    public void onClose(final Player player, final Inventory inventory) {
+    }
 }

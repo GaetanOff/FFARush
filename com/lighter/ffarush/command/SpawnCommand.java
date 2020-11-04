@@ -18,7 +18,7 @@ public final class SpawnCommand {
     private final FFARushPlugin ffaRushPlugin;
 
     /**
-     * Show the usage message
+     * Show the global usage message
      * @param context command argument
      */
     @Command(name = "ffarush", permission = "ffarush.admin", target = CommandTarget.PLAYER)
@@ -43,7 +43,7 @@ public final class SpawnCommand {
      * Set the global lobby
      * @param context command argument
      */
-    @Command(name = "ffarush.setlobby")
+    @Command(name = "ffarush.set.lobby")
     public void handleCommandChild2(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setLobbyLocation(player.getLocation());
@@ -54,7 +54,7 @@ public final class SpawnCommand {
      * Set the spectator location
      * @param context command argument
      */
-    @Command(name = "ffarush.setspectator")
+    @Command(name = "ffarush.set.spectator")
     public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setSpectatorLocation(player.getLocation());
@@ -65,7 +65,7 @@ public final class SpawnCommand {
      * Set the kit editor
      * @param context command argument
      */
-    @Command(name = "ffarush.setkiteditor")
+    @Command(name = "ffarush.set.editor")
     public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setKitEditorLocation(player.getLocation());
@@ -76,7 +76,7 @@ public final class SpawnCommand {
      * Set the kit inventory
      * @param context command argument
      */
-    @Command(name = "ffarush.setinventory")
+    @Command(name = "ffarush.set.inventory")
     public void handleCommandChild5(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
@@ -114,10 +114,10 @@ public final class SpawnCommand {
                 "",
                 Message.GRAY + Message.ITALIC + "Admin Command:",
                 Message.YELLOW + "/ffarush addloc" + Message.GRAY + " - Add a location.",
-                Message.YELLOW + "/ffarush setlobby" + Message.GRAY + " - Set the lobby.",
-                Message.YELLOW + "/ffarush setspectator" + Message.GRAY + " - Set the spectator.",
-                Message.YELLOW + "/ffarush setkiteditor" + Message.GRAY + " - Set the kit editor.",
-                Message.YELLOW + "/ffarush setinventory" + Message.GRAY + " - Modify the kit.",
+                Message.YELLOW + "/ffarush set lobby" + Message.GRAY + " - Set the lobby.",
+                Message.YELLOW + "/ffarush set spectator" + Message.GRAY + " - Set the spectator.",
+                Message.YELLOW + "/ffarush set editor" + Message.GRAY + " - Set the kit editor.",
+                Message.YELLOW + "/ffarush set inventory" + Message.GRAY + " - Modify the kit.",
                 Message.YELLOW + "/ffarush builder" + Message.GRAY + " - Enable builder mode.",
                 "",
                 Message.GRAY + Message.ITALIC + "Normal Command:",

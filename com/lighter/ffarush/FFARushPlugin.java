@@ -8,7 +8,9 @@ import com.lighter.ffarush.listener.PlayerListener;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
 import com.lighter.ffarush.scoreboard.Scoreboard;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import spg.lgdev.iSpigot;
@@ -17,11 +19,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+@FieldDefaults(level= AccessLevel.PRIVATE)
 @Getter
 public class FFARushPlugin extends GCore {
-    private final Map<UUID, PlayerData> players = Maps.newConcurrentMap();
-    private final Map<UUID, UUID> voidPlayers = new HashMap<>();
-    public ManagerHandler managerHandler;
+    final Map<UUID, PlayerData> players = Maps.newConcurrentMap();
+    final Map<UUID, UUID> voidPlayers = new HashMap<>();
+    ManagerHandler managerHandler;
 
     @Override
     protected void onPluginStart() {

@@ -34,8 +34,8 @@ public final class ItemManager extends Manager {
 
     public void giveDefaultItems(final Player player) {
         final ItemStack epee = new ItemBuilder(Material.DIAMOND_SWORD).setName(Message.AQUA + "Join the arena").setUnbreakable().toItemStack();
-        final ItemStack editkit = new ItemBuilder(Material.BOOK).setName(Message.AQUA + "Kit Editor").setUnbreakable().toItemStack();
-        final ItemStack spectator = new ItemBuilder(Material.COMPASS).setName(Message.AQUA + "Spectator").setUnbreakable().toItemStack();
+        final ItemStack editkit = new ItemBuilder(Material.BOOK).setName(Message.AQUA + "Kit Editor").toItemStack();
+        final ItemStack spectator = new ItemBuilder(Material.COMPASS).setName(Message.AQUA + "Spectator").toItemStack();
         final ItemStack glass = new ItemBuilder(Material.STAINED_GLASS_PANE).setName(Message.GRAY + Message.ITALIC + "www.prathen.eu").toItemStack();
 
         this.clearInventory(player);
@@ -70,7 +70,7 @@ public final class ItemManager extends Manager {
     }
 
     public void giveSpectatorItem(final Player player) {
-        final ItemStack leave = new ItemBuilder(Material.REDSTONE).setName(Message.RED + "Leave spectator").setUnbreakable().toItemStack();
+        final ItemStack leave = new ItemBuilder(Material.REDSTONE).setName(Message.RED + "Leave spectator").toItemStack();
         final ItemStack glass = new ItemBuilder(Material.STAINED_GLASS_PANE).setName(Message.GRAY + Message.ITALIC + "www.prathen.eu").toItemStack();
 
         this.clearInventory(player);

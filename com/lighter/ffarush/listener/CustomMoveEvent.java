@@ -19,6 +19,7 @@ public class CustomMoveEvent implements MovementHandler {
     @Override
     public void handleUpdateLocation(final Player player, final Location location, final Location location1, final PacketPlayInFlying packetPlayInFlying) {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
+
         if (playerData.getPlayerState() == PlayerState.FIGHTING) {
             if (player.getLocation().getY() < 29) {
                 player.setStatistic(Statistic.DEATHS, player.getStatistic(Statistic.DEATHS) + 1);

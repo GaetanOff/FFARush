@@ -43,6 +43,7 @@ public class PlayerListener implements Listener {
         final Player player = event.getPlayer();
         final PlayerData playerData = new PlayerData(player, this.ffaRushPlugin);
         this.getFfaRushPlugin().getPlayers().put(player.getUniqueId(), playerData);
+
         playerData.initialize();
         playerData.inject();
     }
@@ -50,6 +51,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onQuit(final PlayerQuitEvent event) {
         final Player player = event.getPlayer();
+
         this.getFfaRushPlugin().getPlayers().remove(player.getUniqueId()).save();
         this.getFfaRushPlugin().getVoidPlayers().remove(player.getUniqueId());
     }
@@ -60,6 +62,7 @@ public class PlayerListener implements Listener {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         final ItemStack itemStack = event.getItem();
         final Block target = event.getClickedBlock();
+
         if (itemStack != null) {
             if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK && itemStack.getItemMeta() != null && itemStack.getItemMeta().getDisplayName() != null) && (playerData.getPlayerState() == PlayerState.LOBBY || playerData.getPlayerState() == PlayerState.SPECTATING)) {
                 switch (itemStack.getType()) {
@@ -136,6 +139,7 @@ public class PlayerListener implements Listener {
             final Player player = (Player) event.getEntity();
             final Player damager = (Player) event.getDamager();
             final PlayerData damagerData = this.getFfaRushPlugin().getPlayer(damager);
+
             if (damagerData.getPlayerState() == PlayerState.FIGHTING)
                 this.getFfaRushPlugin().getVoidPlayers().put(player.getUniqueId(), damager.getUniqueId());
 
@@ -146,7 +150,7 @@ public class PlayerListener implements Listener {
 
             if (damagerData.getPlayerState() != PlayerState.FIGHTING)
                 event.setCancelled(true);
-            
+
         }
     }
 

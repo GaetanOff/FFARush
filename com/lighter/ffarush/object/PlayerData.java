@@ -44,7 +44,7 @@ public final class PlayerData {
 
     public void teleportToLobby() {
         if (this.ffaRushPlugin.getManagerHandler().getLocationManager().getLobbyLocation() != null)
-            player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getLobbyLocation());
+            this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getLobbyLocation());
     }
 
     public void teleportToFight() {
@@ -73,7 +73,7 @@ public final class PlayerData {
 
         this.playerState = PlayerState.EDITING;
 
-        player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation());
+        this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation());
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveKitEditorItem(this.player);
         EntityHider.hidePlayerToEveryone(this.player);
     }
@@ -86,8 +86,8 @@ public final class PlayerData {
 
         this.playerState = PlayerState.SPECTATING;
 
-        player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
-        player.setAllowFlight(true);
+        this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
+        this.player.setAllowFlight(true);
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveSpectatorItem(this.player);
         EntityHider.hidePlayerOnly(this.player);
     }

@@ -35,6 +35,9 @@ public class CustomMoveEvent implements MovementHandler {
 
                 Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + " fell into the void.");
             }
+        } else if (playerData.getPlayerState() == PlayerState.SPECTATING) {
+            if (player.getLocation().getY() < 29)
+                player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
         }
     }
 

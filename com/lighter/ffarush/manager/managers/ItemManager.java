@@ -2,7 +2,6 @@ package com.lighter.ffarush.manager.managers;
 
 import com.gaetan.api.item.ItemBuilder;
 import com.gaetan.api.message.Message;
-import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.manager.Manager;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
@@ -10,7 +9,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -36,51 +34,38 @@ public final class ItemManager extends Manager {
         final ItemStack epee = new ItemBuilder(Material.DIAMOND_SWORD).setName(Message.AQUA + "Join the arena").setUnbreakable().toItemStack();
         final ItemStack editkit = new ItemBuilder(Material.BOOK).setName(Message.AQUA + "Kit Editor").toItemStack();
         final ItemStack spectator = new ItemBuilder(Material.COMPASS).setName(Message.AQUA + "Spectator").toItemStack();
-        final ItemStack glass = new ItemBuilder(Material.STAINED_GLASS_PANE).setName(Message.GRAY + Message.ITALIC + "www.prathen.eu").toItemStack();
 
         this.clearInventory(player);
 
-        for (int i = 0; i < 9; i++) player.getInventory().setItem(i, glass);
-
-        TaskUtil.runLater(() -> {
-            player.getInventory().setItem(2, epee);
-            player.getInventory().setItem(4, spectator);
-            player.getInventory().setItem(6, editkit);
-            player.getInventory().setHeldItemSlot(2);
-        }, this.handler.getFfaRushPlugin(), 20L);
+        player.getInventory().setItem(2, epee);
+        player.getInventory().setItem(4, spectator);
+        player.getInventory().setItem(6, editkit);
+        player.getInventory().setHeldItemSlot(2);
     }
 
     public void giveFightItems(final Player player) {
         final PlayerData playerData = this.handler.getFfaRushPlugin().getPlayer(player);
 
         this.handler.getSpawnKillManager().run(player);
-        TaskUtil.run(() -> {
 
-            this.clearInventory(player);
-            player.getInventory().setArmorContents(this.armorContents);
-            if (playerData.getCustomKit() != null)
-                player.getInventory().setContents(playerData.getCustomKit());
-            else
-                player.getInventory().setContents(this.mainContents);
+        this.clearInventory(player);
+        player.getInventory().setArmorContents(this.armorContents);
+        if (playerData.getCustomKit() != null)
+            player.getInventory().setContents(playerData.getCustomKit());
+        else
+            player.getInventory().setContents(this.mainContents);
 
-            player.getInventory().setHeldItemSlot(0);
-            player.updateInventory();
-
-        });
+        player.getInventory().setHeldItemSlot(0);
+        player.updateInventory();
     }
 
     public void giveSpectatorItem(final Player player) {
         final ItemStack leave = new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Message.RED + "Leave spectator").toItemStack();
-        final ItemStack glass = new ItemBuilder(Material.STAINED_GLASS_PANE).setName(Message.GRAY + Message.ITALIC + "www.prathen.eu").toItemStack();
 
         this.clearInventory(player);
 
-        for (int i = 0; i < 9; i++) player.getInventory().setItem(i, glass);
-
-        TaskUtil.runLater(() -> {
-            player.getInventory().setItem(8, leave);
-            player.getInventory().setHeldItemSlot(8);
-        }, this.handler.getFfaRushPlugin(), 10L);
+        player.getInventory().setItem(8, leave);
+        player.getInventory().setHeldItemSlot(8);
     }
 
     public void giveKitEditorItem(final Player player) {
@@ -92,7 +77,6 @@ public final class ItemManager extends Manager {
 
     private void clearInventory(final Player player) {
         player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
-        player.setGameMode(GameMode.SURVIVAL);
         player.setMaximumNoDamageTicks(20);
         player.setFoodLevel(20);
         player.setHealth(20.0);

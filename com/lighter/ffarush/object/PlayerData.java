@@ -92,9 +92,9 @@ public final class PlayerData {
         this.playerState = PlayerState.SPECTATING;
 
         this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
-        this.player.setAllowFlight(true);
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveSpectatorItem(this.player);
         EntityHider.hidePlayerOnly(this.player);
+        TaskUtil.run(() -> this.player.setAllowFlight(true));
     }
 
     public int getDeaths() {

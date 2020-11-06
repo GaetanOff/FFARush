@@ -11,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.bukkit.GameMode;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -40,6 +41,7 @@ public final class PlayerData {
     public void inject() {
         this.playerState = PlayerState.LOBBY;
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveDefaultItems(player);
+        this.player.setGameMode(GameMode.ADVENTURE);
         this.teleportToLobby();
     }
 
@@ -62,6 +64,7 @@ public final class PlayerData {
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveFightItems(this.player);
         this.ffaRushPlugin.getManagerHandler().getSpawnKillManager().run(this.player);
         this.player.teleport(locationManager.getLocation(random));
+        this.player.setGameMode(GameMode.SURVIVAL);
 
         Message.tell(this.player, Message.GREEN + "You have joined the arena, good luck !");
     }
@@ -75,6 +78,7 @@ public final class PlayerData {
         this.playerState = PlayerState.EDITING;
 
         this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation());
+        this.player.setGameMode(GameMode.SURVIVAL);
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveKitEditorItem(this.player);
         EntityHider.hidePlayerToEveryone(this.player);
     }

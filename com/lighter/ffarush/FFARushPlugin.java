@@ -29,7 +29,7 @@ public class FFARushPlugin extends GCore {
     protected void onPluginStart() {
         this.managerHandler = new ManagerHandler(this);
         this.registerCommands(new SpawnCommand(this));
-        this.registerScoreboard(new Scoreboard(this));
+        this.registerScoreboard(new Scoreboard(this), 40L);
     }
 
     @Override

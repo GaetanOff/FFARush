@@ -188,7 +188,7 @@ public class PlayerListener implements Listener, MovementHandler {
                 ex.printStackTrace();
             }
             playerData.inject();
-        }, this.ffaRushPlugin, 5L);
+        },5L);
     }
 
     @EventHandler

@@ -27,7 +27,7 @@ public final class BlockManager extends Manager {
                 block.setType(Material.AIR);
                 this.getBlockList().remove(block);
             }
-        }, this.handler.getFfaRushPlugin(), 600L);
+        },600L);
     }
 
     public void removeBlock(final Block block) {

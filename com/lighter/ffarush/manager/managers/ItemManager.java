@@ -2,6 +2,7 @@ package com.lighter.ffarush.manager.managers;
 
 import com.gaetan.api.item.ItemBuilder;
 import com.gaetan.api.message.Message;
+import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.manager.Manager;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
@@ -50,13 +51,16 @@ public final class ItemManager extends Manager {
 
         this.clearInventory(player);
         player.getInventory().setArmorContents(this.armorContents);
-        if (playerData.getCustomKit() != null)
-            player.getInventory().setContents(playerData.getCustomKit());
-        else
-            player.getInventory().setContents(this.mainContents);
 
-        player.getInventory().setHeldItemSlot(0);
-        player.updateInventory();
+        TaskUtil.run(() -> {
+            if (playerData.getCustomKit() != null)
+                player.getInventory().setContents(playerData.getCustomKit());
+            else
+                player.getInventory().setContents(this.mainContents);
+
+            player.getInventory().setHeldItemSlot(0);
+            player.updateInventory();
+        });
     }
 
     public void giveSpectatorItem(final Player player) {

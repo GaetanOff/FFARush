@@ -16,9 +16,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.block.Block;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -31,7 +29,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.Vector;
 import spg.lgdev.handler.MovementHandler;
 
 import java.lang.reflect.Field;
@@ -93,12 +90,7 @@ public class PlayerListener implements Listener, MovementHandler {
             if (itemStack.getType() == Material.FLINT_AND_STEEL && event.getAction() == Action.RIGHT_CLICK_BLOCK && target != null && target.getType() == Material.TNT) {
                 target.setType(Material.AIR);
                 event.setCancelled(true);
-                final Location location = target.getLocation().add(0.5, 0.25, 0.5);
-                final TNTPrimed tnt = (TNTPrimed) target.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);
-                tnt.setVelocity(new Vector(0.0, 0.25, 0.0));
-                tnt.setCustomNameVisible(true);
-                tnt.setCustomName(Message.DARK_AQUA + "Prathen " + Message.AQUA + "TNT");
-                tnt.teleport(location);
+                this.ffaRushPlugin.getManagerHandler().getBlockManager().spawnTnt(target);
             }
         }
         if (target != null && playerData.getPlayerState() == PlayerState.EDITING) {
@@ -123,41 +115,6 @@ public class PlayerListener implements Listener, MovementHandler {
 
         if (playerData.getPlayerState() == PlayerState.LOBBY || playerData.getPlayerState() == PlayerState.SPECTATING)
             event.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onDamage(final EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player) {
-            if (this.getFfaRushPlugin().getPlayer((Player) event.getEntity()).getPlayerState() != PlayerState.FIGHTING || event.getCause().equals(EntityDamageEvent.DamageCause.FALL))
-                event.setCancelled(true);
-
-            if (event.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)) {
-                event.setCancelled(true);
-                event.setDamage(4);
-                event.getEntity().setVelocity(event.getEntity().getLocation().getDirection().multiply(1.9d).setY(2));
-            }
-        }
-    }
-
-    @EventHandler
-    public void onEntityDamage(final EntityDamageByEntityEvent event) {
-        if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
-            final Player player = (Player) event.getEntity();
-            final Player damager = (Player) event.getDamager();
-            final PlayerData damagerData = this.getFfaRushPlugin().getPlayer(damager);
-
-            if (damagerData.getPlayerState() == PlayerState.FIGHTING)
-                this.getFfaRushPlugin().getVoidPlayers().put(player.getUniqueId(), damager.getUniqueId());
-
-            if (SpawnKillManager.isCooldownActive(damager) || SpawnKillManager.isCooldownActive(player)) {
-                event.setCancelled(true);
-                Message.tell(damager, Message.RED + "You have to wait the end of Anti SpawnKill time.");
-            }
-
-            if (damagerData.getPlayerState() != PlayerState.FIGHTING)
-                event.setCancelled(true);
-
-        }
     }
 
     @EventHandler
@@ -189,53 +146,6 @@ public class PlayerListener implements Listener, MovementHandler {
             }
             playerData.inject();
         },5L);
-    }
-
-    @EventHandler
-    public void onEntityExplodeEvent(final EntityExplodeEvent event) {
-        event.blockList().clear();
-    }
-
-    @EventHandler
-    public void onPlace(final BlockPlaceEvent event) {
-        final Player player = event.getPlayer();
-        final Block block = event.getBlock();
-        final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
-
-        if (playerData.getPlayerState() == PlayerState.BUILDING)
-            return;
-
-        if ((playerData.getPlayerState() == PlayerState.FIGHTING || playerData.getPlayerState() == PlayerState.SPAWNING) && (block.getType() == Material.SANDSTONE || block.getType() == Material.TNT) && player.getLocation().getY() < 80) {
-            this.ffaRushPlugin.getManagerHandler().getBlockManager().addBlock(block);
-            if (block.getType() == Material.SANDSTONE)
-                player.getInventory().getItemInHand().setAmount(64);
-
-            return;
-        }
-
-        event.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onBreak(final BlockBreakEvent event) {
-        final Player player = event.getPlayer();
-        final Block block = event.getBlock();
-        final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
-
-        if (playerData.getPlayerState() == PlayerState.BUILDING)
-            return;
-
-        if ((playerData.getPlayerState() == PlayerState.FIGHTING || playerData.getPlayerState() == PlayerState.SPAWNING) && (block.getType() == Material.TNT || block.getType() == Material.SANDSTONE)) {
-            this.ffaRushPlugin.getManagerHandler().getBlockManager().removeBlock(block);
-            if (block.getType() == Material.SANDSTONE) {
-                event.setCancelled(true);
-                block.setType(Material.AIR);
-            }
-
-            return;
-        }
-
-        event.setCancelled(true);
     }
 
     @EventHandler

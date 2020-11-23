@@ -6,6 +6,7 @@ import com.gaetan.api.RandomUtil;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.FFARushPlugin;
+import com.lighter.ffarush.manager.managers.ItemManager;
 import com.lighter.ffarush.manager.managers.LocationManager;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -39,8 +40,13 @@ public final class PlayerData {
     }
 
     public void inject() {
+        final ItemManager itemManager = this.ffaRushPlugin.getManagerHandler().getItemManager();
+
+        itemManager.clearInventory(this.player);
+
         this.playerState = PlayerState.LOBBY;
-        this.ffaRushPlugin.getManagerHandler().getItemManager().giveDefaultItems(player);
+        this.player.getInventory().setContents(itemManager.getDefaultItems());
+        this.player.getInventory().setHeldItemSlot(2);
         this.player.setGameMode(GameMode.ADVENTURE);
         this.teleportToLobby();
     }
@@ -88,11 +94,14 @@ public final class PlayerData {
             Message.tell(this.player, Message.RED + "There is no spectator location");
             return;
         }
+        final ItemManager itemManager = this.ffaRushPlugin.getManagerHandler().getItemManager();
+
+        itemManager.clearInventory(this.player);
 
         this.playerState = PlayerState.SPECTATING;
-
         this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
-        this.ffaRushPlugin.getManagerHandler().getItemManager().giveSpectatorItem(this.player);
+        this.player.getInventory().setContents(itemManager.getSpectatorItems());
+        this.player.getInventory().setHeldItemSlot(8);
         EntityHider.hidePlayerOnly(this.player);
         TaskUtil.run(() -> this.player.setAllowFlight(true));
     }

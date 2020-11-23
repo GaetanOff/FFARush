@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -22,6 +23,8 @@ import java.util.List;
 @Getter
 @Setter
 public final class ItemManager extends Manager {
+    ItemStack[] defaultItems;
+    ItemStack[] spectatorItems;
     ItemStack[] mainContents;
     ItemStack[] armorContents;
 
@@ -29,19 +32,36 @@ public final class ItemManager extends Manager {
         super(handler);
 
         this.loadKit();
+        this.loadSpawnItems();
+        this.loadSpectatorItems();
     }
 
-    public void giveDefaultItems(final Player player) {
-        final ItemStack epee = new ItemBuilder(Material.DIAMOND_SWORD).setName(Message.AQUA + "Join the arena").setUnbreakable().toItemStack();
-        final ItemStack editkit = new ItemBuilder(Material.BOOK).setName(Message.AQUA + "Kit Editor").toItemStack();
-        final ItemStack spectator = new ItemBuilder(Material.COMPASS).setName(Message.AQUA + "Spectator").toItemStack();
+    private void loadSpawnItems() {
+        this.defaultItems = new ItemStack[]{
+                null,
+                null,
+                new ItemBuilder(Material.DIAMOND_SWORD).setName(Message.AQUA + ChatColor.BOLD + "Join" + Message.GRAY + " ♦ Right Click").setUnbreakable().toItemStack(),
+                null,
+                new ItemBuilder(Material.COMPASS).setName(Message.AQUA + Message.BOLD + "Spectator" + Message.GRAY + " ♦ Right Click").toItemStack(),
+                null,
+                new ItemBuilder(Material.BOOK).setName(Message.AQUA + Message.BOLD + "Kit Editor" + Message.GRAY + " ♦ Right Click").toItemStack(),
+                null,
+                null
+        };
+    }
 
-        this.clearInventory(player);
-
-        player.getInventory().setItem(2, epee);
-        player.getInventory().setItem(4, spectator);
-        player.getInventory().setItem(6, editkit);
-        player.getInventory().setHeldItemSlot(2);
+    private void loadSpectatorItems() {
+        this.spectatorItems = new ItemStack[]{
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Message.RED + Message.BOLD +"Leave" + Message.GRAY + " ♦ Right Click").toItemStack()
+        };
     }
 
     public void giveFightItems(final Player player) {
@@ -63,15 +83,6 @@ public final class ItemManager extends Manager {
         });
     }
 
-    public void giveSpectatorItem(final Player player) {
-        final ItemStack leave = new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Message.RED + "Leave spectator").toItemStack();
-
-        this.clearInventory(player);
-
-        player.getInventory().setItem(8, leave);
-        player.getInventory().setHeldItemSlot(8);
-    }
-
     public void giveKitEditorItem(final Player player) {
         this.clearInventory(player);
 
@@ -79,7 +90,7 @@ public final class ItemManager extends Manager {
         player.updateInventory();
     }
 
-    private void clearInventory(final Player player) {
+    public void clearInventory(final Player player) {
         player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
         player.setMaximumNoDamageTicks(20);
         player.setFoodLevel(20);

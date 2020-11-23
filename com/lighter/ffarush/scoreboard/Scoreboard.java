@@ -6,6 +6,7 @@ import com.gaetan.api.sidebar.SidebarProvider;
 import com.lighter.ffarush.FFARushPlugin;
 import com.lighter.ffarush.object.PlayerData;
 import lombok.AllArgsConstructor;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -17,21 +18,22 @@ public final class Scoreboard extends SidebarProvider {
 
     @Override
     public String getTitle(final Player player) {
-        return Message.DARK_AQUA + "Prathen" + Message.AQUA + " §bFFARush";
+        return Message.DARK_AQUA + "Prathen" + Message.AQUA + " FFARush";
     }
 
     @Override
     public List<SidebarEntry> getLines(final Player player) {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         final List<SidebarEntry> lines = new ArrayList<>();
-
-        lines.add(new SidebarEntry("§7§m--------------------"));
-        lines.add(new SidebarEntry(Message.AQUA + "Kills" + Message.GRAY + " » " + playerData.getKills()));
-        lines.add(new SidebarEntry(Message.AQUA + "Deaths" + Message.GRAY + " » " + playerData.getDeaths()));
-        lines.add(new SidebarEntry(Message.AQUA + "Ratio" + Message.GRAY + " » " + playerData.getRatio()));
+        lines.add(new SidebarEntry(Message.GRAY + Message.STRIKE_THROUGH + "--------------------"));
+        lines.add(new SidebarEntry(Message.AQUA + "Kills" + Message.GRAY + " » " + Message.WHITE + playerData.getKills()));
+        lines.add(new SidebarEntry(Message.AQUA + "Deaths" + Message.GRAY + " » " + Message.WHITE + playerData.getDeaths()));
+        lines.add(new SidebarEntry(Message.AQUA + "Ratio" + Message.GRAY + " » " + Message.WHITE + playerData.getRatio()));
+        lines.add(new SidebarEntry(""));
+        lines.add(new SidebarEntry(Message.AQUA + "Players" + Message.GRAY + " » " + Message.WHITE + Bukkit.getOnlinePlayers().size()));
         lines.add(new SidebarEntry(""));
         lines.add(new SidebarEntry(Message.GRAY + Message.ITALIC + "www.prathen.eu"));
-        lines.add(new SidebarEntry("§7§m--------------------"));
+        lines.add(new SidebarEntry(Message.GRAY + Message.STRIKE_THROUGH + "--------------------"));
         return lines;
     }
 }

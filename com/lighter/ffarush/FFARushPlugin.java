@@ -3,6 +3,8 @@ package com.lighter.ffarush;
 import com.gaetan.api.plugin.GCore;
 import com.google.common.collect.Maps;
 import com.lighter.ffarush.command.SpawnCommand;
+import com.lighter.ffarush.listener.BlockListener;
+import com.lighter.ffarush.listener.EntityListener;
 import com.lighter.ffarush.listener.PlayerListener;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
@@ -49,6 +51,8 @@ public class FFARushPlugin extends GCore {
 
     @Override
     protected void registerListener() {
+        this.getServer().getPluginManager().registerEvents(new EntityListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new BlockListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         iSpigot.INSTANCE.addMovementHandler(new PlayerListener(this));
     }

@@ -8,6 +8,8 @@ import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.FFARushPlugin;
 import com.lighter.ffarush.manager.managers.ItemManager;
 import com.lighter.ffarush.manager.managers.LocationManager;
+import com.lighter.ffarush.runnable.LoadPlayerConfig;
+import com.lighter.ffarush.runnable.SavePlayerConfig;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -128,22 +130,10 @@ public final class PlayerData {
     }
 
     public void save() {
-        if (this.customKit != null) {
-            TaskUtil.runAsync(() -> {
-                final ConfigUtil config = new ConfigUtil(this.ffaRushPlugin, "/players", this.player.getUniqueId().toString());
-                config.getConfig().set("custom.kit", this.customKit);
-                config.save();
-            });
-        }
+        this.ffaRushPlugin.getServer().getScheduler().runTaskAsynchronously(this.ffaRushPlugin, new SavePlayerConfig(this.ffaRushPlugin, this));
     }
 
     public void initialize() {
-        TaskUtil.runAsync(() -> {
-            if (new File(this.ffaRushPlugin.getDataFolder() + "/players", this.player.getUniqueId().toString() + ".yml").exists()) {
-                final ConfigUtil config = new ConfigUtil(this.ffaRushPlugin, "/players", this.player.getUniqueId().toString());
-                this.customKit = (ItemStack[]) ((List) config.getConfig().getConfigurationSection("custom").get("kit")).toArray(new ItemStack[0]);
-                config.delete();
-            }
-        });
+        this.ffaRushPlugin.getServer().getScheduler().runTaskAsynchronously(this.ffaRushPlugin, new LoadPlayerConfig(this.ffaRushPlugin, this));
     }
 }

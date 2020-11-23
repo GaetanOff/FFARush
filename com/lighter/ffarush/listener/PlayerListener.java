@@ -5,7 +5,6 @@ import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.FFARushPlugin;
 import com.lighter.ffarush.inventory.EditorInventory;
-import com.lighter.ffarush.manager.managers.SpawnKillManager;
 import com.lighter.ffarush.object.PlayerData;
 import com.lighter.ffarush.object.PlayerState;
 import lombok.AllArgsConstructor;
@@ -20,9 +19,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.*;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -30,9 +28,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import spg.lgdev.handler.MovementHandler;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 @Getter
 @AllArgsConstructor
@@ -120,7 +115,6 @@ public class PlayerListener implements Listener, MovementHandler {
     @EventHandler
     public void onDeath(final PlayerDeathEvent event) {
         final Player player = event.getEntity();
-        final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
 
         event.setDeathMessage(Message.RED + event.getEntity().getName() + Message.GRAY + " was killed" + ((event.getEntity().getKiller() != null) ? (" by ") + Message.GREEN + event.getEntity().getKiller().getName() : "") + Message.GRAY + ".");
         if (event.getEntity().getKiller() != null)
@@ -131,20 +125,8 @@ public class PlayerListener implements Listener, MovementHandler {
 
         event.getDrops().clear();
         TaskUtil.runLater(() -> {
-            try {
-                final Object nmsPlayer = player.getClass().getMethod("getHandle", new Class[0]).invoke(player);
-                final Object con = nmsPlayer.getClass().getDeclaredField("playerConnection").get(nmsPlayer);
-                final Class EntityPlayer2 = Class.forName(nmsPlayer.getClass().getPackage().getName() + ".EntityPlayer");
-                final Field minecraftServer = con.getClass().getDeclaredField("minecraftServer");
-                minecraftServer.setAccessible(true);
-                final Object mcserver = minecraftServer.get(con);
-                final Object playerlist = mcserver.getClass().getDeclaredMethod("getPlayerList", new Class[0]).invoke(mcserver);
-                final Method moveToWorld = playerlist.getClass().getMethod("moveToWorld", EntityPlayer2, Integer.TYPE, Boolean.TYPE);
-                moveToWorld.invoke(playerlist, nmsPlayer, 0, false);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            playerData.inject();
+            player.spigot().respawn();
+            this.ffaRushPlugin.getPlayer(player).inject();
         },5L);
     }
 

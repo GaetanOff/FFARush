@@ -1,6 +1,5 @@
 package com.lighter.ffarush.object;
 
-import com.gaetan.api.ConfigUtil;
 import com.gaetan.api.EntityHider;
 import com.gaetan.api.RandomUtil;
 import com.gaetan.api.message.Message;
@@ -19,10 +18,8 @@ import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.io.File;
 import java.io.Serializable;
 import java.text.DecimalFormat;
-import java.util.List;
 
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @Getter
@@ -66,12 +63,10 @@ public final class PlayerData {
             return;
         }
 
-        final int random = RandomUtil.nextBetween(0, locationManager.getLocation() - 1);
-
         this.playerState = PlayerState.SPAWNING;
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveFightItems(this.player);
         this.ffaRushPlugin.getManagerHandler().getSpawnKillManager().run(this.player);
-        this.player.teleport(locationManager.getLocation(random));
+        this.player.teleport(locationManager.getLocation(RandomUtil.nextBetween(0, locationManager.getLocation() - 1)));
         this.player.setGameMode(GameMode.SURVIVAL);
 
         Message.tell(this.player, Message.GREEN + "You have joined the arena, good luck !");

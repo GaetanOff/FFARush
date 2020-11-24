@@ -41,7 +41,7 @@ public enum Lang {
 
     private final String text;
 
-    Lang(String text) {
+    Lang(final String text) {
         this.text = text;
     }
 }

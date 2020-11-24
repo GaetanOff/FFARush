@@ -27,13 +27,9 @@ public final class EditorInventory implements GuiBuilder {
 
     @Override
     public void contents(final Player player, final Inventory inventory) {
-        final ItemStack save = new ItemBuilder(Material.ENDER_CHEST).setName(Message.GREEN + "Save Kit").toItemStack();
-        final ItemStack load = new ItemBuilder(Material.BOOK).setName(Message.AQUA + "Load Kit").toItemStack();
-        final ItemStack reset = new ItemBuilder(Material.REDSTONE).setName(Message.RED + "Reset Kit").toItemStack();
-
-        inventory.setItem(4, save);
-        inventory.setItem(20, load);
-        inventory.setItem(24, reset);
+        inventory.setItem(4, new ItemBuilder(Material.ENDER_CHEST).setName(Message.GREEN + "Save Kit").toItemStack());
+        inventory.setItem(20, new ItemBuilder(Material.BOOK).setName(Message.AQUA + "Load Kit").toItemStack());
+        inventory.setItem(24, new ItemBuilder(Material.REDSTONE).setName(Message.RED + "Reset Kit").toItemStack());
     }
 
     @Override

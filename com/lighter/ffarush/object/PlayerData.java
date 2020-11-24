@@ -21,7 +21,7 @@ import org.bukkit.inventory.ItemStack;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
 public final class PlayerData {

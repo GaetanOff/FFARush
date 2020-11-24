@@ -19,6 +19,7 @@ public final class SpawnCommand {
 
     /**
      * Show the global usage message
+     *
      * @param context command argument
      */
     @Command(name = "ffarush", permission = "ffarush.admin", target = CommandTarget.PLAYER)
@@ -28,6 +29,7 @@ public final class SpawnCommand {
 
     /**
      * Add new a location to the FFARush
+     *
      * @param context command argument
      */
     @Command(name = "ffarush.addloc")
@@ -41,6 +43,7 @@ public final class SpawnCommand {
 
     /**
      * Set the global lobby
+     *
      * @param context command argument
      */
     @Command(name = "ffarush.set.lobby")
@@ -52,6 +55,7 @@ public final class SpawnCommand {
 
     /**
      * Set the spectator location
+     *
      * @param context command argument
      */
     @Command(name = "ffarush.set.spectator")
@@ -63,6 +67,7 @@ public final class SpawnCommand {
 
     /**
      * Set the kit editor
+     *
      * @param context command argument
      */
     @Command(name = "ffarush.set.editor")
@@ -74,6 +79,7 @@ public final class SpawnCommand {
 
     /**
      * Set the kit inventory
+     *
      * @param context command argument
      */
     @Command(name = "ffarush.set.inventory")
@@ -91,6 +97,7 @@ public final class SpawnCommand {
 
     /**
      * Enable or Disable the builder mode
+     *
      * @param context command argument
      */
     @Command(name = "ffarush.builder")

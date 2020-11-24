@@ -19,7 +19,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
 public final class ItemManager extends Manager {
@@ -60,7 +60,7 @@ public final class ItemManager extends Manager {
                 null,
                 null,
                 null,
-                new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Message.RED + Message.BOLD +"Leave" + Message.GRAY + " ♦ Right Click").toItemStack()
+                new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Message.RED + Message.BOLD + "Leave" + Message.GRAY + " ♦ Right Click").toItemStack()
         };
     }
 

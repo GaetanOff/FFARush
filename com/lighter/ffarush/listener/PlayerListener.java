@@ -127,7 +127,7 @@ public class PlayerListener implements Listener, MovementHandler {
         TaskUtil.runLater(() -> {
             player.spigot().respawn();
             this.ffaRushPlugin.getPlayer(player).inject();
-        },5L);
+        }, 5L);
     }
 
     @EventHandler

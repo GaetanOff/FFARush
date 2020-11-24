@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 public class FFARushPlugin extends GCore {
     final Map<UUID, PlayerData> players = Maps.newConcurrentMap();

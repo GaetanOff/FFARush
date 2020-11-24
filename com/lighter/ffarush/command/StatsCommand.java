@@ -12,7 +12,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 @AllArgsConstructor
-public class StatsCommand {
+public final class StatsCommand {
     private final FFARushPlugin ffaRushPlugin;
 
     /**

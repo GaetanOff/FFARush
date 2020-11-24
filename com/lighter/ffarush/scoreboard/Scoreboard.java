@@ -6,7 +6,6 @@ import com.gaetan.api.sidebar.SidebarProvider;
 import com.lighter.ffarush.FFARushPlugin;
 import com.lighter.ffarush.object.PlayerData;
 import lombok.AllArgsConstructor;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public final class Scoreboard extends SidebarProvider {
         lines.add(new SidebarEntry(Message.AQUA + "Deaths" + Message.GRAY + " » " + Message.WHITE + playerData.getDeaths()));
         lines.add(new SidebarEntry(Message.AQUA + "Ratio" + Message.GRAY + " » " + Message.WHITE + playerData.getRatio()));
         lines.add(new SidebarEntry(""));
-        lines.add(new SidebarEntry(Message.AQUA + "Players" + Message.GRAY + " » " + Message.WHITE + Bukkit.getOnlinePlayers().size()));
+        lines.add(new SidebarEntry(Message.AQUA + "Players" + Message.GRAY + " » " + Message.WHITE + this.ffaRushPlugin.getServer().getOnlinePlayers().size()));
         lines.add(new SidebarEntry(""));
         lines.add(new SidebarEntry(Message.GRAY + Message.ITALIC + "www.prathen.eu"));
         lines.add(new SidebarEntry(Message.GRAY + Message.STRIKE_THROUGH + "--------------------"));

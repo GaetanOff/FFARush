@@ -17,6 +17,7 @@ public final class LoadPlayerConfig implements Runnable {
         this.playerData = playerData;
     }
 
+    @Override
     public void run() {
         if (new File(this.ffaRushPlugin.getDataFolder() + "/players", this.playerData.getPlayer().getUniqueId().toString() + ".yml").exists()) {
             final ConfigUtil config = new ConfigUtil(this.ffaRushPlugin, "/players", this.playerData.getPlayer().getUniqueId().toString());

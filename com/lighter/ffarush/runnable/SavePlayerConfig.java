@@ -13,6 +13,7 @@ public final class SavePlayerConfig implements Runnable {
         this.playerData = playerData;
     }
 
+    @Override
     public void run() {
         if (playerData.getCustomKit() != null) {
             final ConfigUtil config = new ConfigUtil(this.ffaRushPlugin, "/players", this.playerData.getPlayer().getUniqueId().toString());

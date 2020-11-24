@@ -8,7 +8,6 @@ import com.lighter.ffarush.inventory.EditorInventory;
 import com.lighter.ffarush.object.PlayerData;
 import com.lighter.ffarush.object.PlayerState;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import net.minecraft.server.v1_8_R3.PacketPlayInFlying;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -29,7 +28,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import spg.lgdev.handler.MovementHandler;
 
-@Getter
 @AllArgsConstructor
 public class PlayerListener implements Listener, MovementHandler {
     private final FFARushPlugin ffaRushPlugin;
@@ -48,8 +46,8 @@ public class PlayerListener implements Listener, MovementHandler {
     public void onQuit(final PlayerQuitEvent event) {
         final Player player = event.getPlayer();
 
-        this.getFfaRushPlugin().getPlayers().remove(player.getUniqueId()).save();
-        this.getFfaRushPlugin().getVoidPlayers().remove(player.getUniqueId());
+        this.ffaRushPlugin.getPlayers().remove(player.getUniqueId()).save();
+        this.ffaRushPlugin.getVoidPlayers().remove(player.getUniqueId());
     }
 
     @EventHandler
@@ -92,7 +90,7 @@ public class PlayerListener implements Listener, MovementHandler {
             event.setCancelled(true);
             switch (target.getType()) {
                 case ANVIL: {
-                    this.getFfaRushPlugin().getManagerHandler().getGuiManager().open(player, EditorInventory.class);
+                    this.ffaRushPlugin.getManagerHandler().getGuiManager().open(player, EditorInventory.class);
                     break;
                 }
                 case WOODEN_DOOR: {
@@ -106,7 +104,7 @@ public class PlayerListener implements Listener, MovementHandler {
 
     @EventHandler
     public void onInventoryClick(final InventoryClickEvent event) {
-        final PlayerData playerData = this.getFfaRushPlugin().getPlayer((Player) event.getWhoClicked());
+        final PlayerData playerData = this.ffaRushPlugin.getPlayer((Player) event.getWhoClicked());
 
         if (playerData.getPlayerState() == PlayerState.LOBBY || playerData.getPlayerState() == PlayerState.SPECTATING)
             event.setCancelled(true);
@@ -120,8 +118,8 @@ public class PlayerListener implements Listener, MovementHandler {
         if (event.getEntity().getKiller() != null)
             event.getEntity().getKiller().setHealth(20.0);
 
-        if (this.getFfaRushPlugin().getVoidPlayers().get(player.getUniqueId()) != null)
-            this.getFfaRushPlugin().getVoidPlayers().remove(player.getUniqueId());
+        if (this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()) != null)
+            this.ffaRushPlugin.getVoidPlayers().remove(player.getUniqueId());
 
         event.getDrops().clear();
         TaskUtil.runLater(() -> {

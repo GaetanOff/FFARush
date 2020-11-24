@@ -38,7 +38,7 @@ public class PlayerListener implements Listener, MovementHandler {
     public void onJoin(final PlayerJoinEvent event) {
         final Player player = event.getPlayer();
         final PlayerData playerData = new PlayerData(player, this.ffaRushPlugin);
-        this.getFfaRushPlugin().getPlayers().put(player.getUniqueId(), playerData);
+        this.ffaRushPlugin.getPlayers().put(player.getUniqueId(), playerData);
 
         playerData.initialize();
         playerData.inject();

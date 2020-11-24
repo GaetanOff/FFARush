@@ -112,11 +112,10 @@ public final class PlayerData {
     }
 
     public Serializable getRatio() {
-        final double ratio = (double) this.getKills() / this.getDeaths();
         final DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
         if (this.getDeaths() != 0 && this.getKills() != 0)
-            return df.format(ratio);
+            return df.format((double) this.getKills() / this.getDeaths());
 
         if (this.getDeaths() == 0)
             return String.valueOf(this.getKills());

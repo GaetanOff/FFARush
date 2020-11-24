@@ -1,4 +1,4 @@
-package com.lighter.ffarush.enums;
+package com.gaetan.ffarush.enums;
 
 import com.gaetan.api.message.Message;
 import lombok.Getter;

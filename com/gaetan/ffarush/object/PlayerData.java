@@ -1,16 +1,16 @@
-package com.lighter.ffarush.object;
+package com.gaetan.ffarush.object;
 
 import com.gaetan.api.EntityHider;
 import com.gaetan.api.RandomUtil;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.enums.Lang;
-import com.lighter.ffarush.enums.PlayerState;
-import com.lighter.ffarush.manager.managers.ItemManager;
-import com.lighter.ffarush.manager.managers.LocationManager;
-import com.lighter.ffarush.runnable.LoadPlayerConfig;
-import com.lighter.ffarush.runnable.SavePlayerConfig;
+import com.gaetan.ffarush.enums.PlayerState;
+import com.gaetan.ffarush.manager.managers.ItemManager;
+import com.gaetan.ffarush.manager.managers.LocationManager;
+import com.gaetan.ffarush.runnable.SavePlayerConfig;
+import com.gaetan.ffarush.FFARushPlugin;
+import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.runnable.LoadPlayerConfig;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

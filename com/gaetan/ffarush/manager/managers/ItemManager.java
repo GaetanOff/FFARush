@@ -1,11 +1,11 @@
-package com.lighter.ffarush.manager.managers;
+package com.gaetan.ffarush.manager.managers;
 
 import com.gaetan.api.item.ItemBuilder;
 import com.gaetan.api.runnable.TaskUtil;
-import com.lighter.ffarush.enums.Lang;
-import com.lighter.ffarush.manager.Manager;
-import com.lighter.ffarush.manager.ManagerHandler;
-import com.lighter.ffarush.object.PlayerData;
+import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.manager.Manager;
+import com.gaetan.ffarush.manager.ManagerHandler;
+import com.gaetan.ffarush.object.PlayerData;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

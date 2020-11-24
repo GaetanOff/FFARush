@@ -1,15 +1,15 @@
-package com.lighter.ffarush;
+package com.gaetan.ffarush;
 
 import com.gaetan.api.plugin.GCore;
+import com.gaetan.ffarush.command.FFACommand;
+import com.gaetan.ffarush.listener.BlockListener;
+import com.gaetan.ffarush.listener.EntityListener;
+import com.gaetan.ffarush.listener.PlayerListener;
+import com.gaetan.ffarush.manager.ManagerHandler;
+import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.scoreboard.Scoreboard;
 import com.google.common.collect.Maps;
-import com.lighter.ffarush.command.FFACommand;
-import com.lighter.ffarush.command.StatsCommand;
-import com.lighter.ffarush.listener.BlockListener;
-import com.lighter.ffarush.listener.EntityListener;
-import com.lighter.ffarush.listener.PlayerListener;
-import com.lighter.ffarush.manager.ManagerHandler;
-import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.scoreboard.Scoreboard;
+import com.gaetan.ffarush.command.StatsCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;

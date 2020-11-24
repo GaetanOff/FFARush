@@ -1,4 +1,4 @@
-package com.lighter.ffarush.manager;
+package com.gaetan.ffarush.manager;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

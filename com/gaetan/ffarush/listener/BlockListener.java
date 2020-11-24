@@ -1,8 +1,8 @@
-package com.lighter.ffarush.listener;
+package com.gaetan.ffarush.listener;
 
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.enums.PlayerState;
+import com.gaetan.ffarush.FFARushPlugin;
+import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.enums.PlayerState;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

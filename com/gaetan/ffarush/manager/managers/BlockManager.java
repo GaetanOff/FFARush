@@ -1,9 +1,9 @@
-package com.lighter.ffarush.manager.managers;
+package com.gaetan.ffarush.manager.managers;
 
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
-import com.lighter.ffarush.manager.Manager;
-import com.lighter.ffarush.manager.ManagerHandler;
+import com.gaetan.ffarush.manager.Manager;
+import com.gaetan.ffarush.manager.ManagerHandler;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.Material;

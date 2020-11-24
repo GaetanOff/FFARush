@@ -1,10 +1,10 @@
-package com.lighter.ffarush.scoreboard;
+package com.gaetan.ffarush.scoreboard;
 
 import com.gaetan.api.sidebar.SidebarEntry;
 import com.gaetan.api.sidebar.SidebarProvider;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.enums.Lang;
-import com.lighter.ffarush.object.PlayerData;
+import com.gaetan.ffarush.FFARushPlugin;
+import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.object.PlayerData;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 

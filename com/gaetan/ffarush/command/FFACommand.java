@@ -1,14 +1,14 @@
-package com.lighter.ffarush.command;
+package com.gaetan.ffarush.command;
 
 import com.gaetan.api.command.utils.annotation.Command;
 import com.gaetan.api.command.utils.command.Context;
 import com.gaetan.api.command.utils.target.CommandTarget;
 import com.gaetan.api.message.Message;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.enums.Lang;
-import com.lighter.ffarush.manager.managers.LocationManager;
-import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.enums.PlayerState;
+import com.gaetan.ffarush.manager.managers.LocationManager;
+import com.gaetan.ffarush.FFARushPlugin;
+import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.enums.PlayerState;
 import lombok.AllArgsConstructor;
 import org.bukkit.GameMode;
 import org.bukkit.command.ConsoleCommandSender;

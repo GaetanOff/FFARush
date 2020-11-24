@@ -1,11 +1,11 @@
-package com.lighter.ffarush.listener;
+package com.gaetan.ffarush.listener;
 
 import com.gaetan.api.message.Message;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.enums.Lang;
-import com.lighter.ffarush.manager.managers.SpawnKillManager;
-import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.enums.PlayerState;
+import com.gaetan.ffarush.FFARushPlugin;
+import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.manager.managers.SpawnKillManager;
+import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.enums.PlayerState;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

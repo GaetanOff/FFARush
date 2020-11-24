@@ -1,4 +1,4 @@
-package com.lighter.ffarush.enums;
+package com.gaetan.ffarush.enums;
 
 public enum PlayerState {
     LOBBY,

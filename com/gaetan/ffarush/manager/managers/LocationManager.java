@@ -1,8 +1,8 @@
-package com.lighter.ffarush.manager.managers;
+package com.gaetan.ffarush.manager.managers;
 
 import com.gaetan.api.serializer.Serialize;
-import com.lighter.ffarush.manager.Manager;
-import com.lighter.ffarush.manager.ManagerHandler;
+import com.gaetan.ffarush.manager.Manager;
+import com.gaetan.ffarush.manager.ManagerHandler;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

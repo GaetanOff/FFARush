@@ -1,8 +1,8 @@
-package com.lighter.ffarush.runnable;
+package com.gaetan.ffarush.runnable;
 
 import com.gaetan.api.ConfigUtil;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.object.PlayerData;
+import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.FFARushPlugin;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;

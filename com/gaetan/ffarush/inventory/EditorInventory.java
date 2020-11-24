@@ -1,11 +1,11 @@
-package com.lighter.ffarush.inventory;
+package com.gaetan.ffarush.inventory;
 
 import com.gaetan.api.inventory.GuiBuilder;
 import com.gaetan.api.item.ItemBuilder;
 import com.gaetan.api.message.Message;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.enums.Lang;
-import com.lighter.ffarush.object.PlayerData;
+import com.gaetan.ffarush.FFARushPlugin;
+import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.object.PlayerData;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

@@ -1,12 +1,12 @@
-package com.lighter.ffarush.manager;
+package com.gaetan.ffarush.manager;
 
 import com.gaetan.api.inventory.GuiManager;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.inventory.EditorInventory;
-import com.lighter.ffarush.manager.managers.BlockManager;
-import com.lighter.ffarush.manager.managers.ItemManager;
-import com.lighter.ffarush.manager.managers.LocationManager;
-import com.lighter.ffarush.manager.managers.SpawnKillManager;
+import com.gaetan.ffarush.inventory.EditorInventory;
+import com.gaetan.ffarush.manager.managers.BlockManager;
+import com.gaetan.ffarush.manager.managers.ItemManager;
+import com.gaetan.ffarush.manager.managers.LocationManager;
+import com.gaetan.ffarush.manager.managers.SpawnKillManager;
+import com.gaetan.ffarush.FFARushPlugin;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;

@@ -1,13 +1,13 @@
-package com.lighter.ffarush.listener;
+package com.gaetan.ffarush.listener;
 
 import com.gaetan.api.EntityHider;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
-import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.enums.Lang;
-import com.lighter.ffarush.inventory.EditorInventory;
-import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.enums.PlayerState;
+import com.gaetan.ffarush.FFARushPlugin;
+import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.inventory.EditorInventory;
+import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.enums.PlayerState;
 import lombok.AllArgsConstructor;
 import net.minecraft.server.v1_8_R3.PacketPlayInFlying;
 import org.bukkit.Bukkit;

@@ -1,9 +1,9 @@
-package com.lighter.ffarush.manager.managers;
+package com.gaetan.ffarush.manager.managers;
 
-import com.lighter.ffarush.manager.Manager;
-import com.lighter.ffarush.manager.ManagerHandler;
-import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.enums.PlayerState;
+import com.gaetan.ffarush.manager.Manager;
+import com.gaetan.ffarush.manager.ManagerHandler;
+import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.enums.PlayerState;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 

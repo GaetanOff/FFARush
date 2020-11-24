@@ -1,9 +1,8 @@
 package com.lighter.ffarush.manager.managers;
 
 import com.gaetan.api.item.ItemBuilder;
-import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
-import com.lighter.ffarush.command.Lang;
+import com.lighter.ffarush.enums.Lang;
 import com.lighter.ffarush.manager.Manager;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
@@ -11,7 +10,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;

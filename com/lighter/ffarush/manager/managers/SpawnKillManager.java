@@ -3,7 +3,7 @@ package com.lighter.ffarush.manager.managers;
 import com.lighter.ffarush.manager.Manager;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.object.PlayerState;
+import com.lighter.ffarush.enums.PlayerState;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 

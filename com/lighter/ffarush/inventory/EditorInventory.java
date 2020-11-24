@@ -4,7 +4,7 @@ import com.gaetan.api.inventory.GuiBuilder;
 import com.gaetan.api.item.ItemBuilder;
 import com.gaetan.api.message.Message;
 import com.lighter.ffarush.FFARushPlugin;
-import com.lighter.ffarush.command.Lang;
+import com.lighter.ffarush.enums.Lang;
 import com.lighter.ffarush.object.PlayerData;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;

@@ -2,7 +2,7 @@ package com.lighter.ffarush.listener;
 
 import com.lighter.ffarush.FFARushPlugin;
 import com.lighter.ffarush.object.PlayerData;
-import com.lighter.ffarush.object.PlayerState;
+import com.lighter.ffarush.enums.PlayerState;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

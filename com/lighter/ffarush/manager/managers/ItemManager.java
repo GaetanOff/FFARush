@@ -3,6 +3,7 @@ package com.lighter.ffarush.manager.managers;
 import com.gaetan.api.item.ItemBuilder;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
+import com.lighter.ffarush.command.Lang;
 import com.lighter.ffarush.manager.Manager;
 import com.lighter.ffarush.manager.ManagerHandler;
 import com.lighter.ffarush.object.PlayerData;
@@ -40,11 +41,11 @@ public final class ItemManager extends Manager {
         this.defaultItems = new ItemStack[]{
                 null,
                 null,
-                new ItemBuilder(Material.DIAMOND_SWORD).setName(Message.AQUA + ChatColor.BOLD + "Join" + Message.GRAY + " ♦ Right Click").setUnbreakable().toItemStack(),
+                new ItemBuilder(Material.DIAMOND_SWORD).setName(Lang.ITEM_JOIN.getText()).setUnbreakable().toItemStack(),
                 null,
-                new ItemBuilder(Material.COMPASS).setName(Message.AQUA + Message.BOLD + "Spectator" + Message.GRAY + " ♦ Right Click").toItemStack(),
+                new ItemBuilder(Material.COMPASS).setName(Lang.ITEM_SPECTATOR.getText()).toItemStack(),
                 null,
-                new ItemBuilder(Material.BOOK).setName(Message.AQUA + Message.BOLD + "Kit Editor" + Message.GRAY + " ♦ Right Click").toItemStack(),
+                new ItemBuilder(Material.BOOK).setName(Lang.ITEM_EDITOR.getText()).toItemStack(),
                 null,
                 null
         };
@@ -60,7 +61,7 @@ public final class ItemManager extends Manager {
                 null,
                 null,
                 null,
-                new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Message.RED + Message.BOLD + "Leave" + Message.GRAY + " ♦ Right Click").toItemStack()
+                new ItemBuilder(Material.INK_SACK, 1, (short) 1).setName(Lang.ITEM_LEAVE.getText()).toItemStack()
         };
     }
 

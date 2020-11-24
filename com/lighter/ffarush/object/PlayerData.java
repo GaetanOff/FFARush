@@ -5,6 +5,7 @@ import com.gaetan.api.RandomUtil;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.FFARushPlugin;
+import com.lighter.ffarush.command.Lang;
 import com.lighter.ffarush.manager.managers.ItemManager;
 import com.lighter.ffarush.manager.managers.LocationManager;
 import com.lighter.ffarush.runnable.LoadPlayerConfig;
@@ -59,7 +60,7 @@ public final class PlayerData {
         final LocationManager locationManager = this.ffaRushPlugin.getManagerHandler().getLocationManager();
 
         if (locationManager.getLocationMap().isEmpty()) {
-            Message.tell(this.player, Message.RED + "There are no location available.");
+            Message.tell(this.player, Lang.NO_LOCATION.getText());
             return;
         }
 
@@ -69,12 +70,12 @@ public final class PlayerData {
         this.player.teleport(locationManager.getLocation(RandomUtil.nextBetween(0, locationManager.getLocation() - 1)));
         this.player.setGameMode(GameMode.SURVIVAL);
 
-        Message.tell(this.player, Message.GREEN + "You have joined the arena, good luck !");
+        Message.tell(this.player, Lang.ARENA_JOINED.getText());
     }
 
     public void teleportToKitEditor() {
         if (this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation() == null) {
-            Message.tell(this.player, Message.RED + "There is no kit editor available");
+            Message.tell(this.player, Lang.NO_EDITOR.getText());
             return;
         }
 
@@ -88,7 +89,7 @@ public final class PlayerData {
 
     public void spectator() {
         if (this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation() == null) {
-            Message.tell(this.player, Message.RED + "There is no spectator location");
+            Message.tell(this.player, Lang.NO_SPECTATOR.getText());
             return;
         }
         final ItemManager itemManager = this.ffaRushPlugin.getManagerHandler().getItemManager();

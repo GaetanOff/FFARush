@@ -2,6 +2,7 @@ package com.lighter.ffarush.listener;
 
 import com.gaetan.api.message.Message;
 import com.lighter.ffarush.FFARushPlugin;
+import com.lighter.ffarush.command.Lang;
 import com.lighter.ffarush.manager.managers.SpawnKillManager;
 import com.lighter.ffarush.object.PlayerData;
 import com.lighter.ffarush.object.PlayerState;
@@ -43,7 +44,7 @@ public class EntityListener implements Listener {
 
             if (SpawnKillManager.isCooldownActive(damager) || SpawnKillManager.isCooldownActive(player)) {
                 event.setCancelled(true);
-                Message.tell(damager, Message.RED + "You have to wait the end of Anti SpawnKill time.");
+                Message.tell(damager, Lang.ANTI_SPAWNKILL.getText());
             }
 
             if (damagerData.getPlayerState() != PlayerState.FIGHTING)

@@ -1,9 +1,9 @@
 package com.lighter.ffarush.scoreboard;
 
-import com.gaetan.api.message.Message;
 import com.gaetan.api.sidebar.SidebarEntry;
 import com.gaetan.api.sidebar.SidebarProvider;
 import com.lighter.ffarush.FFARushPlugin;
+import com.lighter.ffarush.command.Lang;
 import com.lighter.ffarush.object.PlayerData;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
@@ -17,22 +17,22 @@ public final class Scoreboard extends SidebarProvider {
 
     @Override
     public String getTitle(final Player player) {
-        return Message.DARK_AQUA + "Prathen" + Message.AQUA + " FFARush";
+        return Lang.SB_TITLE.getText();
     }
 
     @Override
     public List<SidebarEntry> getLines(final Player player) {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         final List<SidebarEntry> lines = new ArrayList<>();
-        lines.add(new SidebarEntry(Message.GRAY + Message.STRIKE_THROUGH + "--------------------"));
-        lines.add(new SidebarEntry(Message.AQUA + "Kills" + Message.GRAY + " » " + Message.WHITE + playerData.getKills()));
-        lines.add(new SidebarEntry(Message.AQUA + "Deaths" + Message.GRAY + " » " + Message.WHITE + playerData.getDeaths()));
-        lines.add(new SidebarEntry(Message.AQUA + "Ratio" + Message.GRAY + " » " + Message.WHITE + playerData.getRatio()));
+        lines.add(new SidebarEntry(Lang.SB_BAR.getText()));
+        lines.add(new SidebarEntry(Lang.SB_KILLS.getText() + playerData.getKills()));
+        lines.add(new SidebarEntry(Lang.SB_DEATHS.getText() + playerData.getDeaths()));
+        lines.add(new SidebarEntry(Lang.SB_RATIO.getText() + playerData.getRatio()));
         lines.add(new SidebarEntry(""));
-        lines.add(new SidebarEntry(Message.AQUA + "Players" + Message.GRAY + " » " + Message.WHITE + this.ffaRushPlugin.getServer().getOnlinePlayers().size()));
+        lines.add(new SidebarEntry(Lang.SB_PLAYERS.getText() + this.ffaRushPlugin.getServer().getOnlinePlayers().size()));
         lines.add(new SidebarEntry(""));
-        lines.add(new SidebarEntry(Message.GRAY + Message.ITALIC + "www.prathen.eu"));
-        lines.add(new SidebarEntry(Message.GRAY + Message.STRIKE_THROUGH + "--------------------"));
+        lines.add(new SidebarEntry(Lang.SB_INFO.getText()));
+        lines.add(new SidebarEntry(Lang.SB_BAR.getText()));
         return lines;
     }
 }

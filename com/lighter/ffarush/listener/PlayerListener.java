@@ -4,6 +4,7 @@ import com.gaetan.api.EntityHider;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.lighter.ffarush.FFARushPlugin;
+import com.lighter.ffarush.command.Lang;
 import com.lighter.ffarush.inventory.EditorInventory;
 import com.lighter.ffarush.object.PlayerData;
 import com.lighter.ffarush.object.PlayerState;
@@ -114,7 +115,7 @@ public class PlayerListener implements Listener, MovementHandler {
     public void onDeath(final PlayerDeathEvent event) {
         final Player player = event.getEntity();
 
-        event.setDeathMessage(Message.RED + event.getEntity().getName() + Message.GRAY + " was killed" + ((event.getEntity().getKiller() != null) ? (" by ") + Message.GREEN + event.getEntity().getKiller().getName() : "") + Message.GRAY + ".");
+        event.setDeathMessage(Message.RED + event.getEntity().getName() + Message.GRAY + Lang.PLAYER_DEATH.getText() + ((event.getEntity().getKiller() != null) ? (" by ") + Message.GREEN + event.getEntity().getKiller().getName() : "") + Message.GRAY + ".");
         if (event.getEntity().getKiller() != null)
             event.getEntity().getKiller().setHealth(20.0);
 
@@ -148,7 +149,7 @@ public class PlayerListener implements Listener, MovementHandler {
                 if (this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()) != null) {
                     final Player attacker = Bukkit.getPlayer(this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()));
 
-                    Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + " was void-killed by " + Message.GREEN + attacker.getName() + Message.GRAY + ".");
+                    Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + Lang.VOID_DEATH.getText() + Message.GREEN + attacker.getName() + Message.GRAY + ".");
                     attacker.setStatistic(Statistic.PLAYER_KILLS, attacker.getStatistic(Statistic.PLAYER_KILLS) + 1);
                     attacker.setHealth(20.0);
                     player.setStatistic(Statistic.DEATHS, player.getStatistic(Statistic.DEATHS) + 1);
@@ -156,7 +157,7 @@ public class PlayerListener implements Listener, MovementHandler {
                     return;
                 }
 
-                Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + " fell into the void.");
+                Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + Lang.VOID_DEATH_ALONE.getText());
             }
         } else if (playerData.getPlayerState() == PlayerState.SPECTATING) {
             if (player.getLocation().getY() < 29)

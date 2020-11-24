@@ -36,7 +36,7 @@ public final class SpawnCommand {
     public void handleCommandChild(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final LocationManager locationManager = this.ffaRushPlugin.getManagerHandler().getLocationManager();
-        Message.tell(player, Message.GREEN + "Position " + locationManager.getLocation() + " added.");
+        Message.tell(player, Lang.ADD_POS.getText());
         locationManager.addLocation(player.getLocation(), String.valueOf(locationManager.getLocation()));
         locationManager.setLocation(locationManager.getLocation() + 1);
     }
@@ -50,7 +50,7 @@ public final class SpawnCommand {
     public void handleCommandChild2(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setLobbyLocation(player.getLocation());
-        Message.tell(player, Message.GREEN + "Lobby sucessfully set.");
+        Message.tell(player, Lang.LOBBY_SET.getText());
     }
 
     /**
@@ -62,7 +62,7 @@ public final class SpawnCommand {
     public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setSpectatorLocation(player.getLocation());
-        Message.tell(player, Message.GREEN + "Spectator sucessfully set.");
+        Message.tell(player, Lang.LOBBY_SET.getText());
     }
 
     /**
@@ -74,7 +74,7 @@ public final class SpawnCommand {
     public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setKitEditorLocation(player.getLocation());
-        Message.tell(player, Message.GREEN + "Kit Editor sucessfully set.");
+        Message.tell(player, Lang.EDITOR_SET.getText());
     }
 
     /**
@@ -87,12 +87,12 @@ public final class SpawnCommand {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() != PlayerState.BUILDING) {
-            Message.tell(player, Message.RED + "You have to be in builder mode.");
+            Message.tell(player, Lang.NEED_BUILDER.getText());
             return;
         }
 
         this.ffaRushPlugin.getManagerHandler().getItemManager().setKit(player.getInventory().getContents(), player.getInventory().getArmorContents());
-        Message.tell(player, Message.GREEN + "Inventory updated.");
+        Message.tell(player, Lang.INV_UPDATE.getText());
     }
 
     /**
@@ -106,11 +106,11 @@ public final class SpawnCommand {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() == PlayerState.BUILDING) {
             playerData.inject();
-            Message.tell(player, Message.RED + "Builder disabled.");
+            Message.tell(player, Lang.BUILD_OFF.getText());
         } else {
             this.ffaRushPlugin.getPlayer(player).setPlayerState(PlayerState.BUILDING);
             player.setGameMode(GameMode.CREATIVE);
-            Message.tell(player, Message.GREEN + "Builder enabled.");
+            Message.tell(player, Lang.BUILD_ON.getText());
         }
     }
 

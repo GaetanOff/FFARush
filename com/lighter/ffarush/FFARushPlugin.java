@@ -2,7 +2,7 @@ package com.lighter.ffarush;
 
 import com.gaetan.api.plugin.GCore;
 import com.google.common.collect.Maps;
-import com.lighter.ffarush.command.SpawnCommand;
+import com.lighter.ffarush.command.FFACommand;
 import com.lighter.ffarush.listener.BlockListener;
 import com.lighter.ffarush.listener.EntityListener;
 import com.lighter.ffarush.listener.PlayerListener;
@@ -30,7 +30,7 @@ public class FFARushPlugin extends GCore {
     @Override
     protected void onPluginStart() {
         this.managerHandler = new ManagerHandler(this);
-        this.registerCommands(new SpawnCommand(this));
+        this.registerCommands(new FFACommand(this));
         this.registerScoreboard(new Scoreboard(this), 40L);
     }
 

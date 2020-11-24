@@ -15,7 +15,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 @AllArgsConstructor
-public final class SpawnCommand {
+public final class FFACommand {
     private final FFARushPlugin ffaRushPlugin;
 
     /**

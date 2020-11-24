@@ -20,7 +20,7 @@ public final class StatsCommand {
      *
      * @param context command argument
      */
-    @Command(name = "stats", aliases = "elo", target = CommandTarget.PLAYER)
+    @Command(name = "stats", aliases = {"elo", "stat", "statistic"}, target = CommandTarget.PLAYER)
     public void handleCommand(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         if (context.getArgs().length == 0) {

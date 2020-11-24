@@ -30,12 +30,14 @@ public enum Lang {
     NO_LOCATION(Message.RED + "There are no location available."),
     NO_EDITOR(Message.RED + "There is no kit editor available."),
     NO_SPECTATOR(Message.RED + "There is no spectator location."),
+    PLAYER_NULL(Message.RED + "This player is offline."),
     ARENA_JOINED(Message.GREEN + "You have joined the arena, good luck !"),
+    STATS_OF(Message.AQUA + "Statistics of" + Message.GRAY + " » " + Message.WHITE),
+    KILLS(Message.AQUA + "Kills" + Message.GRAY + " » " + Message.WHITE),
+    DEATHS(Message.AQUA + "Deaths" + Message.GRAY + " » " + Message.WHITE),
+    RATIO(Message.AQUA + "Ratio" + Message.GRAY + " » " + Message.WHITE),
     SB_TITLE(Message.DARK_AQUA + "Prathen" + Message.AQUA + " FFARush"),
     SB_BAR(Message.GRAY + Message.STRIKE_THROUGH + "--------------------"),
-    SB_KILLS(Message.AQUA + "Kills" + Message.GRAY + " » " + Message.WHITE),
-    SB_DEATHS(Message.AQUA + "Deaths" + Message.GRAY + " » " + Message.WHITE),
-    SB_RATIO(Message.AQUA + "Ratio" + Message.GRAY + " » " + Message.WHITE),
     SB_PLAYERS(Message.AQUA + "Players" + Message.GRAY + " » " + Message.WHITE),
     SB_INFO(Message.GRAY + Message.ITALIC + "www.prathen.eu");
 

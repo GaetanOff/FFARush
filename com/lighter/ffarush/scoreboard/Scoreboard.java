@@ -25,9 +25,9 @@ public final class Scoreboard extends SidebarProvider {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         final List<SidebarEntry> lines = new ArrayList<>();
         lines.add(new SidebarEntry(Lang.SB_BAR.getText()));
-        lines.add(new SidebarEntry(Lang.SB_KILLS.getText() + playerData.getKills()));
-        lines.add(new SidebarEntry(Lang.SB_DEATHS.getText() + playerData.getDeaths()));
-        lines.add(new SidebarEntry(Lang.SB_RATIO.getText() + playerData.getRatio()));
+        lines.add(new SidebarEntry(Lang.KILLS.getText() + playerData.getKills()));
+        lines.add(new SidebarEntry(Lang.DEATHS.getText() + playerData.getDeaths()));
+        lines.add(new SidebarEntry(Lang.RATIO.getText() + playerData.getRatio()));
         lines.add(new SidebarEntry(""));
         lines.add(new SidebarEntry(Lang.SB_PLAYERS.getText() + this.ffaRushPlugin.getServer().getOnlinePlayers().size()));
         lines.add(new SidebarEntry(""));

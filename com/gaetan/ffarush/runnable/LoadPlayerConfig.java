@@ -3,14 +3,17 @@ package com.gaetan.ffarush.runnable;
 import com.gaetan.api.ConfigUtil;
 import com.gaetan.ffarush.object.PlayerData;
 import com.gaetan.ffarush.FFARushPlugin;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public final class LoadPlayerConfig implements Runnable {
-    private final FFARushPlugin ffaRushPlugin;
-    private final PlayerData playerData;
+    final FFARushPlugin ffaRushPlugin;
+    final PlayerData playerData;
 
     public LoadPlayerConfig(final FFARushPlugin ffaRushPlugin, final PlayerData playerData) {
         this.ffaRushPlugin = ffaRushPlugin;

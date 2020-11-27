@@ -37,7 +37,7 @@ public final class FFACommand {
     public void handleCommandChild(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final LocationManager locationManager = this.ffaRushPlugin.getManagerHandler().getLocationManager();
-        Message.tell(player, Lang.ADD_POS.getText());
+        Message.tell(player, Lang.ADD_POS.getText().replace("%position%", String.valueOf(locationManager.getLocation())));
         locationManager.addLocation(player.getLocation(), String.valueOf(locationManager.getLocation()));
         locationManager.setLocation(locationManager.getLocation() + 1);
     }

@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 public enum Lang {
-    ADD_POS(Message.GREEN + "Position added."),
+    ADD_POS(Message.GREEN + "Position %position% added."),
     LOBBY_SET(Message.GREEN + "Lobby sucessfully set."),
     SPEC_SET(Message.GREEN + "Spectator sucessfully set."),
     EDITOR_SET(Message.GREEN + "Kit Editor sucessfully set."),

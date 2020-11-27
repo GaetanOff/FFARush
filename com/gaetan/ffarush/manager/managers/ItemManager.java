@@ -1,5 +1,6 @@
 package com.gaetan.ffarush.manager.managers;
 
+import com.gaetan.api.PlayerUtil;
 import com.gaetan.api.item.ItemBuilder;
 import com.gaetan.api.runnable.TaskUtil;
 import com.gaetan.ffarush.enums.Lang;
@@ -68,7 +69,7 @@ public final class ItemManager extends Manager {
 
         this.handler.getSpawnKillManager().run(player);
 
-        this.clearInventory(player);
+        PlayerUtil.clearInventory(player, true);
         player.getInventory().setArmorContents(this.armorContents);
 
         TaskUtil.run(() -> {
@@ -83,22 +84,9 @@ public final class ItemManager extends Manager {
     }
 
     public void giveKitEditorItem(final Player player) {
-        this.clearInventory(player);
+        PlayerUtil.clearInventory(player, true);
 
         player.getInventory().setHeldItemSlot(0);
-        player.updateInventory();
-    }
-
-    public void clearInventory(final Player player) {
-        player.getActivePotionEffects().forEach(potionEffect -> player.removePotionEffect(potionEffect.getType()));
-        player.setMaximumNoDamageTicks(20);
-        player.setFoodLevel(20);
-        player.setHealth(20.0);
-        player.setFireTicks(0);
-        player.setFallDistance(0.0f);
-        player.setMaximumNoDamageTicks(20);
-        player.getInventory().clear();
-        player.getInventory().setArmorContents(null);
         player.updateInventory();
     }
 

@@ -1,6 +1,7 @@
 package com.gaetan.ffarush.object;
 
 import com.gaetan.api.EntityHider;
+import com.gaetan.api.PlayerUtil;
 import com.gaetan.api.RandomUtil;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
@@ -43,7 +44,7 @@ public final class PlayerData {
     public void inject() {
         final ItemManager itemManager = this.ffaRushPlugin.getManagerHandler().getItemManager();
 
-        itemManager.clearInventory(this.player);
+        PlayerUtil.clearInventory(player, true);
 
         this.playerState = PlayerState.LOBBY;
         this.player.getInventory().setContents(itemManager.getDefaultItems());
@@ -95,7 +96,7 @@ public final class PlayerData {
         }
         final ItemManager itemManager = this.ffaRushPlugin.getManagerHandler().getItemManager();
 
-        itemManager.clearInventory(this.player);
+        PlayerUtil.clearInventory(player, true);
 
         this.playerState = PlayerState.SPECTATING;
         this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());

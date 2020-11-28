@@ -7,6 +7,7 @@ import com.gaetan.ffarush.listener.EntityListener;
 import com.gaetan.ffarush.listener.PlayerListener;
 import com.gaetan.ffarush.manager.ManagerHandler;
 import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.runnable.CustomMoveEvent;
 import com.gaetan.ffarush.scoreboard.Scoreboard;
 import com.google.common.collect.Maps;
 import com.gaetan.ffarush.command.StatsCommand;
@@ -57,6 +58,7 @@ public class FFARushPlugin extends GCore {
         this.getServer().getPluginManager().registerEvents(new EntityListener(this), this);
         this.getServer().getPluginManager().registerEvents(new BlockListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        new CustomMoveEvent(this).runTaskTimer(this, 0L, 20L);
     }
 
     public PlayerData getPlayer(final Player player) {

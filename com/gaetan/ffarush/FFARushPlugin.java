@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import spg.lgdev.iSpigot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,7 +57,6 @@ public class FFARushPlugin extends GCore {
         this.getServer().getPluginManager().registerEvents(new EntityListener(this), this);
         this.getServer().getPluginManager().registerEvents(new BlockListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
-        iSpigot.INSTANCE.addMovementHandler(new PlayerListener(this));
     }
 
     public PlayerData getPlayer(final Player player) {

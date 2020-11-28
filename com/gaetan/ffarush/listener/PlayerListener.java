@@ -5,13 +5,11 @@ import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.enums.Lang;
+import com.gaetan.ffarush.enums.PlayerState;
 import com.gaetan.ffarush.inventory.EditorInventory;
 import com.gaetan.ffarush.object.PlayerData;
-import com.gaetan.ffarush.enums.PlayerState;
 import lombok.AllArgsConstructor;
-import net.minecraft.server.v1_8_R3.PacketPlayInFlying;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
 import org.bukkit.block.Block;
@@ -22,15 +20,11 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
-import spg.lgdev.handler.MovementHandler;
 
 @AllArgsConstructor
-public class PlayerListener implements Listener, MovementHandler {
+public class PlayerListener implements Listener {
     private final FFARushPlugin ffaRushPlugin;
 
     @EventHandler
@@ -139,9 +133,10 @@ public class PlayerListener implements Listener, MovementHandler {
         event.setCancelled(true);
     }
 
-    @Override
-    public void handleUpdateLocation(final Player player, final Location from, final Location to, final PacketPlayInFlying packetPlayInFlying) {
-        if (from.getX() != to.getX() || from.getZ() != to.getZ()) {
+    @EventHandler
+    public void onMove(final PlayerMoveEvent event) {
+        if (event.getFrom().getX() != event.getTo().getX() || event.getFrom().getZ() != event.getTo().getZ()) {
+            final Player player = event.getPlayer();
             final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
 
             if (playerData.getPlayerState() == PlayerState.FIGHTING) {
@@ -165,10 +160,5 @@ public class PlayerListener implements Listener, MovementHandler {
                     player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
             }
         }
-    }
-
-    @Override
-    public void handleUpdateRotation(final Player player, final Location location, final Location location1, final PacketPlayInFlying packetPlayInFlying) {
-
     }
 }

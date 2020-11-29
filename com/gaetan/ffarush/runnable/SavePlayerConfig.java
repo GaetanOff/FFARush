@@ -4,17 +4,14 @@ import com.gaetan.api.ConfigUtil;
 import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.object.PlayerData;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public final class SavePlayerConfig implements Runnable {
     final FFARushPlugin ffaRushPlugin;
     final PlayerData playerData;
-
-    public SavePlayerConfig(final FFARushPlugin ffaRushPlugin, final PlayerData playerData) {
-        this.ffaRushPlugin = ffaRushPlugin;
-        this.playerData = playerData;
-    }
 
     @Override
     public void run() {

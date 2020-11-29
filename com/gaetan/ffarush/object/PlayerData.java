@@ -37,7 +37,7 @@ public final class PlayerData {
         this.ffaRushPlugin = ffaRushPlugin;
 
         this.player = player;
-        this.playerState = null;
+        this.playerState = PlayerState.LOBBY;
         this.customKit = null;
     }
 

@@ -38,7 +38,7 @@ public final class CustomMoveEvent extends BukkitRunnable {
                 }
             } else if (playerData.getPlayerState() == PlayerState.SPECTATING) {
                 if (player.getLocation().getY() < 29)
-                    player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
+                 player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
             }
         });
     }

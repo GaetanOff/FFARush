@@ -42,12 +42,10 @@ public final class PlayerData {
     }
 
     public void inject() {
-        final ItemManager itemManager = this.ffaRushPlugin.getManagerHandler().getItemManager();
-
         PlayerUtil.clearInventory(player, true);
 
         this.playerState = PlayerState.LOBBY;
-        this.player.getInventory().setContents(itemManager.getDefaultItems());
+        this.player.getInventory().setContents(this.ffaRushPlugin.getManagerHandler().getItemManager().getDefaultItems());
         this.player.getInventory().setHeldItemSlot(2);
         this.player.setGameMode(GameMode.ADVENTURE);
         this.teleportToLobby();

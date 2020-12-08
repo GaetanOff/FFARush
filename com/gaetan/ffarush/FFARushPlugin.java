@@ -14,7 +14,6 @@ import com.gaetan.ffarush.command.StatsCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -45,7 +44,7 @@ public class FFARushPlugin extends GCore {
 
     @Override
     protected void onPluginLoaded() {
-        Bukkit.getOnlinePlayers().forEach(player -> {
+        this.getServer().getOnlinePlayers().forEach(player -> {
             final PlayerData playerData = new PlayerData(player, this);
             this.getPlayers().put(player.getUniqueId(), playerData);
             playerData.initialize();

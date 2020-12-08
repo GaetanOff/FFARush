@@ -6,7 +6,6 @@ import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.enums.PlayerState;
 import com.gaetan.ffarush.data.PlayerData;
 import lombok.AllArgsConstructor;
-import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,14 +16,14 @@ public final class CustomMoveEvent extends BukkitRunnable {
 
     @Override
     public void run() {
-        Bukkit.getOnlinePlayers().forEach(player -> {
+        this.ffaRushPlugin.getServer().getOnlinePlayers().forEach(player -> {
             final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
 
             if (playerData.getPlayerState() == PlayerState.FIGHTING) {
                 if (player.getLocation().getY() < 29) {
                     playerData.inject();
                     if (this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()) != null) {
-                        final Player attacker = Bukkit.getPlayer(this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()));
+                        final Player attacker = this.ffaRushPlugin.getServer().getPlayer(this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()));
 
                         Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + Lang.VOID_DEATH.getText() + Message.GREEN + attacker.getName() + Message.GRAY + ".");
                         attacker.setStatistic(Statistic.PLAYER_KILLS, attacker.getStatistic(Statistic.PLAYER_KILLS) + 1);

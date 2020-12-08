@@ -6,7 +6,6 @@ import com.gaetan.api.RandomUtil;
 import com.gaetan.api.message.Message;
 import com.gaetan.api.runnable.TaskUtil;
 import com.gaetan.ffarush.enums.PlayerState;
-import com.gaetan.ffarush.manager.managers.ItemManager;
 import com.gaetan.ffarush.manager.managers.LocationManager;
 import com.gaetan.ffarush.runnable.SavePlayerConfig;
 import com.gaetan.ffarush.FFARushPlugin;
@@ -92,13 +91,12 @@ public final class PlayerData {
             Message.tell(this.player, Lang.NO_SPECTATOR.getText());
             return;
         }
-        final ItemManager itemManager = this.ffaRushPlugin.getManagerHandler().getItemManager();
 
         PlayerUtil.clearInventory(player, true);
 
         this.playerState = PlayerState.SPECTATING;
         this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation());
-        this.player.getInventory().setContents(itemManager.getSpectatorItems());
+        this.player.getInventory().setContents(this.ffaRushPlugin.getManagerHandler().getItemManager().getSpectatorItems());
         this.player.getInventory().setHeldItemSlot(8);
         EntityHider.hidePlayerOnly(this.player);
         TaskUtil.run(() -> this.player.setAllowFlight(true));

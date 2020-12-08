@@ -7,7 +7,7 @@ import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.enums.PlayerState;
 import com.gaetan.ffarush.inventory.EditorInventory;
-import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.data.PlayerData;
 import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

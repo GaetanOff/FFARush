@@ -6,7 +6,7 @@ import com.gaetan.ffarush.listener.BlockListener;
 import com.gaetan.ffarush.listener.EntityListener;
 import com.gaetan.ffarush.listener.PlayerListener;
 import com.gaetan.ffarush.manager.ManagerHandler;
-import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.data.PlayerData;
 import com.gaetan.ffarush.runnable.CustomMoveEvent;
 import com.gaetan.ffarush.scoreboard.Scoreboard;
 import com.google.common.collect.Maps;

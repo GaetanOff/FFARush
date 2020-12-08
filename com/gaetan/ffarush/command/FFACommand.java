@@ -7,7 +7,7 @@ import com.gaetan.api.message.Message;
 import com.gaetan.ffarush.manager.managers.LocationManager;
 import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.enums.Lang;
-import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.data.PlayerData;
 import com.gaetan.ffarush.enums.PlayerState;
 import lombok.AllArgsConstructor;
 import org.bukkit.GameMode;

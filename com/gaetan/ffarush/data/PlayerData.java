@@ -1,4 +1,4 @@
-package com.gaetan.ffarush.object;
+package com.gaetan.ffarush.data;
 
 import com.gaetan.api.EntityHider;
 import com.gaetan.api.PlayerUtil;

@@ -4,7 +4,7 @@ import com.gaetan.api.sidebar.SidebarEntry;
 import com.gaetan.api.sidebar.SidebarProvider;
 import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.enums.Lang;
-import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.data.PlayerData;
 import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 

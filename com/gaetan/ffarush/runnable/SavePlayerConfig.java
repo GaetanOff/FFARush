@@ -2,7 +2,7 @@ package com.gaetan.ffarush.runnable;
 
 import com.gaetan.api.ConfigUtil;
 import com.gaetan.ffarush.FFARushPlugin;
-import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.data.PlayerData;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;

@@ -6,7 +6,7 @@ import com.gaetan.api.runnable.TaskUtil;
 import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.manager.Manager;
 import com.gaetan.ffarush.manager.ManagerHandler;
-import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.data.PlayerData;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

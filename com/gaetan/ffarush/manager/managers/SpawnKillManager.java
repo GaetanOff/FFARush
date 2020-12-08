@@ -2,7 +2,7 @@ package com.gaetan.ffarush.manager.managers;
 
 import com.gaetan.ffarush.manager.Manager;
 import com.gaetan.ffarush.manager.ManagerHandler;
-import com.gaetan.ffarush.object.PlayerData;
+import com.gaetan.ffarush.data.PlayerData;
 import com.gaetan.ffarush.enums.PlayerState;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;

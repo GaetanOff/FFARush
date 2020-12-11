@@ -22,14 +22,16 @@ public final class CustomMoveEvent extends BukkitRunnable {
             if (playerData.getPlayerState() == PlayerState.FIGHTING) {
                 if (player.getLocation().getY() < 29) {
                     playerData.inject();
-                    if (this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()) != null) {
-                        final Player attacker = this.ffaRushPlugin.getServer().getPlayer(this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()));
+                    if (playerData.getVoidPlayers() != null) {
+                        for (final Player playerInList : playerData.getVoidPlayers()) {
+                            final Player attacker = this.ffaRushPlugin.getServer().getPlayer(playerInList.getUniqueId());
 
-                        Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + Lang.VOID_DEATH.getText() + Message.GREEN + attacker.getName() + Message.GRAY + ".");
-                        attacker.setStatistic(Statistic.PLAYER_KILLS, attacker.getStatistic(Statistic.PLAYER_KILLS) + 1);
-                        attacker.setHealth(20.0);
-                        player.setStatistic(Statistic.DEATHS, player.getStatistic(Statistic.DEATHS) + 1);
-                        this.ffaRushPlugin.getVoidPlayers().remove(player.getUniqueId());
+                            Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + Lang.VOID_DEATH.getText() + Message.GREEN + attacker.getName() + Message.GRAY + ".");
+                            attacker.setStatistic(Statistic.PLAYER_KILLS, attacker.getStatistic(Statistic.PLAYER_KILLS) + 1);
+                            attacker.setHealth(20.0);
+                            player.setStatistic(Statistic.DEATHS, player.getStatistic(Statistic.DEATHS) + 1);
+                            playerData.getVoidPlayers().remove(playerInList);
+                        }
                         return;
                     }
 

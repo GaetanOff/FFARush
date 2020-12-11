@@ -22,6 +22,8 @@ import org.bukkit.inventory.ItemStack;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -29,6 +31,7 @@ import java.text.DecimalFormat;
 public final class PlayerData {
     FFARushPlugin ffaRushPlugin;
     Player player;
+    List<Player> voidPlayers;
     PlayerState playerState;
     ItemStack[] customKit;
 
@@ -36,6 +39,7 @@ public final class PlayerData {
         this.ffaRushPlugin = ffaRushPlugin;
 
         this.player = player;
+        this.voidPlayers = new ArrayList<>();
         this.playerState = PlayerState.LOBBY;
         this.customKit = null;
     }

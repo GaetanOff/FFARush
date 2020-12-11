@@ -37,10 +37,11 @@ public class EntityListener implements Listener {
         if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
             final Player player = (Player) event.getEntity();
             final Player damager = (Player) event.getDamager();
+            final PlayerData playerData = this.ffaRushPlugin.getPlayer(damager);
             final PlayerData damagerData = this.ffaRushPlugin.getPlayer(damager);
 
             if (damagerData.getPlayerState() == PlayerState.FIGHTING)
-                this.ffaRushPlugin.getVoidPlayers().put(player.getUniqueId(), damager.getUniqueId());
+                playerData.getVoidPlayers().add(damager);
 
             if (SpawnKillManager.isCooldownActive(damager) || SpawnKillManager.isCooldownActive(player)) {
                 event.setCancelled(true);

@@ -40,7 +40,6 @@ public class PlayerListener implements Listener {
         final Player player = event.getPlayer();
 
         this.ffaRushPlugin.getPlayers().remove(player.getUniqueId()).save();
-        this.ffaRushPlugin.getVoidPlayers().remove(player.getUniqueId());
     }
 
     @EventHandler
@@ -106,13 +105,14 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onDeath(final PlayerDeathEvent event) {
         final Player player = event.getEntity();
+        final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
 
         event.setDeathMessage(Message.RED + event.getEntity().getName() + Message.GRAY + Lang.PLAYER_DEATH.getText() + ((event.getEntity().getKiller() != null) ? (" by ") + Message.GREEN + event.getEntity().getKiller().getName() : "") + Message.GRAY + ".");
         if (event.getEntity().getKiller() != null)
             event.getEntity().getKiller().setHealth(20.0);
 
-        if (this.ffaRushPlugin.getVoidPlayers().get(player.getUniqueId()) != null)
-            this.ffaRushPlugin.getVoidPlayers().remove(player.getUniqueId());
+        if (playerData.getVoidPlayers() != null)
+            playerData.getVoidPlayers().remove(player);
 
         event.getDrops().clear();
         TaskUtil.runLater(() -> {

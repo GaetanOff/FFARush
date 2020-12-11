@@ -16,7 +16,6 @@ import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -24,7 +23,6 @@ import java.util.UUID;
 @Getter
 public class FFARushPlugin extends GCore {
     final Map<UUID, PlayerData> players = Maps.newConcurrentMap();
-    final Map<UUID, UUID> voidPlayers = new HashMap<>();
     ManagerHandler managerHandler;
 
     @Override

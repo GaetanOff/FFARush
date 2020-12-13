@@ -55,7 +55,7 @@ public class FFARushPlugin extends GCore {
         this.getServer().getPluginManager().registerEvents(new EntityListener(this), this);
         this.getServer().getPluginManager().registerEvents(new BlockListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
-        new CustomMoveEvent(this).runTaskTimer(this, 0L, 20L);
+        new CustomMoveEvent(this).runTaskTimer(this, 0L, 40L);
     }
 
     public PlayerData getPlayer(final Player player) {

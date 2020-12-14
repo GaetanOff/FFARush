@@ -9,7 +9,10 @@ import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.data.PlayerData;
 import lombok.AllArgsConstructor;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 @AllArgsConstructor
 public final class StatsCommand {
@@ -34,6 +37,17 @@ public final class StatsCommand {
             this.statsMessage(player, this.ffaRushPlugin.getPlayer(target));
         }
     }
+
+    /*@Command(name = "near", permission = "near.use", target = CommandTarget.PLAYER)
+    public void handleCommand(final Context<ConsoleCommandSender> context, int blocks, boolean state) {
+        Player player = (Player) context.getSender();
+        if (state) {
+            player.getNearbyEntities(blocks, blocks, blocks)
+                    .stream()
+                    .filter(entity -> entity instanceof Player)
+                    .forEach(entity -> Message.tell(player, "-> " + entity.getName()));
+        }
+    }*/
 
     private void statsMessage(final Player player, final PlayerData playerData) {
         Message.tell(player, new String[]{

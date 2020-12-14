@@ -37,9 +37,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onQuit(final PlayerQuitEvent event) {
-        final Player player = event.getPlayer();
-
-        this.ffaRushPlugin.getPlayers().remove(player.getUniqueId()).save();
+        this.ffaRushPlugin.getPlayers().remove(event.getPlayer().getUniqueId()).save();
     }
 
     @EventHandler
@@ -106,7 +104,6 @@ public class PlayerListener implements Listener {
     public void onDeath(final PlayerDeathEvent event) {
         final Player player = event.getEntity();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
-
         event.setDeathMessage(Message.RED + event.getEntity().getName() + Message.GRAY + Lang.PLAYER_DEATH.getText() + ((event.getEntity().getKiller() != null) ? (" by ") + Message.GREEN + event.getEntity().getKiller().getName() : "") + Message.GRAY + ".");
         if (event.getEntity().getKiller() != null)
             event.getEntity().getKiller().setHealth(20.0);

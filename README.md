@@ -16,4 +16,3 @@ Commands
 | `/ffarush set spectator`        | Set the spawn point for the spectator mode                        | `ffarush.admin`                                                     |
 | `/ffarush set editor`           | Set the spawn point for the editor mode                           | `ffarush.admin`                                                     |
 | `/ffarush set inventory`        | Set the items for the kit                                         | `ffarush.admin`                                                     |
-                                                                                                     |

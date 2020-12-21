@@ -2,10 +2,7 @@ package com.gaetan.ffarush.manager;
 
 import com.gaetan.api.inventory.GuiManager;
 import com.gaetan.ffarush.inventory.EditorInventory;
-import com.gaetan.ffarush.manager.managers.BlockManager;
-import com.gaetan.ffarush.manager.managers.ItemManager;
-import com.gaetan.ffarush.manager.managers.LocationManager;
-import com.gaetan.ffarush.manager.managers.SpawnKillManager;
+import com.gaetan.ffarush.manager.managers.*;
 import com.gaetan.ffarush.FFARushPlugin;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -19,6 +16,7 @@ public class ManagerHandler {
     final BlockManager blockManager;
     final LocationManager locationManager;
     final SpawnKillManager spawnKillManager;
+    final WorldManager worldManager;
 
     final GuiManager guiManager;
 
@@ -28,6 +26,7 @@ public class ManagerHandler {
         this.blockManager = new BlockManager(this);
         this.locationManager = new LocationManager(this);
         this.spawnKillManager = new SpawnKillManager(this);
+        this.worldManager = new WorldManager(this);
 
         this.guiManager = new GuiManager(this.ffaRushPlugin);
         this.guiManager.addMenu(new EditorInventory(this.ffaRushPlugin));

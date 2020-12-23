@@ -22,7 +22,7 @@ public final class EditorInventory implements GuiBuilder {
     }
 
     @Override
-    public int getSize() {
+    public int size() {
         return 27;
     }
 

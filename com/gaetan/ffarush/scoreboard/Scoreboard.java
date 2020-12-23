@@ -16,12 +16,12 @@ public final class Scoreboard extends SidebarProvider {
     private final FFARushPlugin ffaRushPlugin;
 
     @Override
-    public String getTitle(final Player player) {
+    public String title(final Player player) {
         return Lang.SB_TITLE.getText();
     }
 
     @Override
-    public List<SidebarEntry> getLines(final Player player) {
+    public List<SidebarEntry> lines(final Player player) {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         final List<SidebarEntry> lines = new ArrayList<>();
         lines.add(new SidebarEntry(Lang.SB_BAR.getText()));

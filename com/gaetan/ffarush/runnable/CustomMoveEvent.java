@@ -5,14 +5,22 @@ import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.enums.PlayerState;
 import com.gaetan.ffarush.data.PlayerData;
-import lombok.AllArgsConstructor;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-@AllArgsConstructor
 public final class CustomMoveEvent extends BukkitRunnable {
     private final FFARushPlugin ffaRushPlugin;
+
+    /**
+     * Constructor for the CustomMoveEvent class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
+    public CustomMoveEvent(final FFARushPlugin ffaRushPlugin) {
+        this.ffaRushPlugin  = ffaRushPlugin;
+        this.runTaskTimer(this.ffaRushPlugin, 0L, 40L);
+    }
 
     /**
      * BukkitRunnable to replace the Bukkit Move Event.

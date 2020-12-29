@@ -68,11 +68,11 @@ public class FFARushPlugin extends GCore {
      */
     @Override
     protected void registerListener() {
-        this.getServer().getPluginManager().registerEvents(new EntityListener(this), this);
-        this.getServer().getPluginManager().registerEvents(new BlockListener(this), this);
-        this.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
-        new CustomMoveEvent(this).runTaskTimer(this, 0L, 40L);
-        new TntExplode(this).runTaskTimer(this, 0L, 1L);
+        new BlockListener(this);
+        new EntityListener(this);
+        new PlayerListener(this);
+        new CustomMoveEvent(this);
+        new TntExplode(this);
     }
 
     /**

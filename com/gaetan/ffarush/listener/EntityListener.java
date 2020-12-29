@@ -6,7 +6,6 @@ import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.manager.managers.SpawnKillManager;
 import com.gaetan.ffarush.data.PlayerData;
 import com.gaetan.ffarush.enums.PlayerState;
-import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,14 +13,18 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-@AllArgsConstructor
 public class EntityListener implements Listener {
+    private final FFARushPlugin ffaRushPlugin;
+
     /**
      * Constructor for the EntityListener class.
      *
      * @param ffaRushPlugin reference to te main class
      */
-    private final FFARushPlugin ffaRushPlugin;
+    public EntityListener(final FFARushPlugin ffaRushPlugin) {
+        this.ffaRushPlugin = ffaRushPlugin;
+        this.ffaRushPlugin.getServer().getPluginManager().registerEvents(this, this.ffaRushPlugin);
+    }
 
     @EventHandler
     public void onDamage(final EntityDamageEvent event) {

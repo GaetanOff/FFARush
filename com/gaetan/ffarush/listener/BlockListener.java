@@ -3,7 +3,6 @@ package com.gaetan.ffarush.listener;
 import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.data.PlayerData;
 import com.gaetan.ffarush.enums.PlayerState;
-import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -12,14 +11,18 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-@AllArgsConstructor
 public class BlockListener implements Listener {
+    private final FFARushPlugin ffaRushPlugin;
+
     /**
      * Constructor for the BlockListener class.
      *
      * @param ffaRushPlugin reference to te main class
      */
-    private final FFARushPlugin ffaRushPlugin;
+    public BlockListener(final FFARushPlugin ffaRushPlugin) {
+        this.ffaRushPlugin = ffaRushPlugin;
+        this.ffaRushPlugin.getServer().getPluginManager().registerEvents(this, this.ffaRushPlugin);
+    }
 
     @EventHandler
     public void onPlace(final BlockPlaceEvent event) {

@@ -8,7 +8,6 @@ import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.enums.PlayerState;
 import com.gaetan.ffarush.inventory.EditorInventory;
 import com.gaetan.ffarush.data.PlayerData;
-import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -21,14 +20,18 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 
-@AllArgsConstructor
 public class PlayerListener implements Listener {
+    private final FFARushPlugin ffaRushPlugin;
+
     /**
      * Constructor for the PlayerListener class.
      *
      * @param ffaRushPlugin reference to te main class
      */
-    private final FFARushPlugin ffaRushPlugin;
+    public PlayerListener(final FFARushPlugin ffaRushPlugin) {
+        this.ffaRushPlugin = ffaRushPlugin;
+        this.ffaRushPlugin.getServer().getPluginManager().registerEvents(this, this.ffaRushPlugin);
+    }
 
     @EventHandler
     public void onJoin(final PlayerJoinEvent event) {

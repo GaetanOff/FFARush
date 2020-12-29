@@ -3,17 +3,26 @@ package com.gaetan.ffarush.runnable;
 import com.gaetan.api.message.Message;
 import com.gaetan.ffarush.FFARushPlugin;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.text.DecimalFormat;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor
 public final class TntExplode extends BukkitRunnable {
     final FFARushPlugin ffaRushPlugin;
-    final DecimalFormat format = new DecimalFormat("0.0");
+    final DecimalFormat format;
+
+    /**
+     * Constructor for the TntExplode class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
+    public TntExplode(final FFARushPlugin ffaRushPlugin) {
+        this.ffaRushPlugin  = ffaRushPlugin;
+        this.format = new DecimalFormat("0.0");
+        this.runTaskTimer(this.ffaRushPlugin, 0L, 1L);
+    }
 
     /**
      * BukkitRunnable to put a counter on the custom tnt.

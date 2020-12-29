@@ -2,7 +2,6 @@ package com.gaetan.ffarush.manager.managers;
 
 import com.gaetan.ffarush.manager.Manager;
 import com.gaetan.ffarush.manager.ManagerHandler;
-import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -24,7 +23,7 @@ public final class WorldManager extends Manager {
      * Setup all worlds for better optimization.
      */
     private void setupWorld() {
-        Bukkit.getWorlds().forEach(world -> {
+        this.handler.getFfaRushPlugin().getServer().getWorlds().forEach(world -> {
             world.setGameRuleValue("doDaylightCycle", "false");
             world.setGameRuleValue("doMobSpawn", "false");
             world.setGameRuleValue("doFireTick", "false");

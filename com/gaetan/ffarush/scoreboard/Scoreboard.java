@@ -15,11 +15,21 @@ import java.util.List;
 public final class Scoreboard extends SidebarProvider {
     private final FFARushPlugin ffaRushPlugin;
 
+    /**
+     * Set the title of the sidebar.
+     *
+     * @param player player who see the sidebar
+     */
     @Override
     public String title(final Player player) {
         return Lang.SB_TITLE.getText();
     }
 
+    /**
+     * Set the lines of the sidebar.
+     *
+     * @param player player who see the sidebar
+     */
     @Override
     public List<SidebarEntry> lines(final Player player) {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);

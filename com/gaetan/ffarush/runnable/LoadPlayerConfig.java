@@ -17,6 +17,9 @@ public final class LoadPlayerConfig implements Runnable {
     final FFARushPlugin ffaRushPlugin;
     final PlayerData playerData;
 
+    /**
+     * Runnable to load and cache a player config.
+     */
     @Override
     public void run() {
         if (new File(this.ffaRushPlugin.getDataFolder() + "/players", this.playerData.getPlayer().getUniqueId().toString() + ".yml").exists()) {

@@ -16,16 +16,28 @@ import org.bukkit.inventory.ItemStack;
 public final class EditorInventory implements GuiBuilder {
     private final FFARushPlugin ffaRushPlugin;
 
+    /**
+     * Name of the inventory.
+     */
     @Override
     public String name() {
         return Message.GRAY + "Kit Editor";
     }
 
+    /**
+     * Size of the inventory.
+     */
     @Override
     public int size() {
         return 27;
     }
 
+    /**
+     * Contents of the inventory.
+     *
+     * @param player player who opened
+     * @param inventory inventory who opened
+     */
     @Override
     public void contents(final Player player, final Inventory inventory) {
         inventory.setItem(4, new ItemBuilder(Material.ENDER_CHEST).setName(Lang.EDITOR_ITEM_SAVE.getText()).toItemStack());
@@ -33,6 +45,14 @@ public final class EditorInventory implements GuiBuilder {
         inventory.setItem(24, new ItemBuilder(Material.REDSTONE).setName(Lang.EDITOR_ITEM_RESET.getText()).toItemStack());
     }
 
+    /**
+     * InventoryClickEvent for this inventory.
+     *
+     * @param player player who click
+     * @param inventory inventory who get interaction
+     * @param itemStack itemStack who get interaction
+     * @param i slot who get interaction
+     */
     @Override
     public void onClick(final Player player, final Inventory inventory, final ItemStack itemStack, final int i) {
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
@@ -65,6 +85,12 @@ public final class EditorInventory implements GuiBuilder {
         }
     }
 
+    /**
+     * InventoryCloseEvent for this inventory.
+     *
+     * @param player player who close the inventory
+     * @param inventory inventory who get closed
+     */
     @Override
     public void onClose(final Player player, final Inventory inventory) {
     }

@@ -28,6 +28,11 @@ public final class ItemManager extends Manager {
     ItemStack[] mainContents;
     ItemStack[] armorContents;
 
+    /**
+     * Constructor for the ItemManager.
+     *
+     * @param handler reference to the ManagerHandler class
+     */
     public ItemManager(final ManagerHandler handler) {
         super(handler);
 
@@ -36,6 +41,9 @@ public final class ItemManager extends Manager {
         this.loadSpectatorItems();
     }
 
+    /**
+     * Load the default spawn items.
+     */
     private void loadSpawnItems() {
         this.defaultItems = new ItemStack[]{
                 null,
@@ -50,6 +58,9 @@ public final class ItemManager extends Manager {
         };
     }
 
+    /**
+     * Load the spectator items.
+     */
     private void loadSpectatorItems() {
         this.spectatorItems = new ItemStack[]{
                 null,
@@ -64,6 +75,11 @@ public final class ItemManager extends Manager {
         };
     }
 
+    /**
+     * Give the fight item to a player.
+     *
+     * @param player player to give the items
+     */
     public void giveFightItems(final Player player) {
         final PlayerData playerData = this.handler.getFfaRushPlugin().getPlayer(player);
 
@@ -83,6 +99,11 @@ public final class ItemManager extends Manager {
         });
     }
 
+    /**
+     * Give the kit editor item to a player.
+     *
+     * @param player player to give the items
+     */
     public void giveKitEditorItem(final Player player) {
         PlayerUtil.clearInventory(player, true);
 
@@ -90,6 +111,12 @@ public final class ItemManager extends Manager {
         player.updateInventory();
     }
 
+    /**
+     * Set the default fight kit in the cache & config.
+     *
+     * @param main inventory items
+     * @param armor armor items
+     */
     public void setKit(final ItemStack[] main, final ItemStack[] armor) {
         this.mainContents = main;
         this.armorContents = armor;
@@ -99,6 +126,9 @@ public final class ItemManager extends Manager {
         this.handler.getFfaRushPlugin().saveConfig();
     }
 
+    /**
+     * Load the default fight kit from the config.
+     */
     private void loadKit() {
         final FileConfiguration fileConfig = this.handler.getFfaRushPlugin().getConfig();
         final ConfigurationSection arenaSection = fileConfig.getConfigurationSection("inventory");

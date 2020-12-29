@@ -32,7 +32,7 @@ public class PlayerListener implements Listener {
         this.ffaRushPlugin.getPlayers().put(player.getUniqueId(), playerData);
 
         playerData.initialize();
-        playerData.inject();
+        playerData.injectToLobby();
     }
 
     @EventHandler
@@ -51,11 +51,11 @@ public class PlayerListener implements Listener {
             if ((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK && itemStack.getItemMeta() != null && itemStack.getItemMeta().getDisplayName() != null) && (playerData.getPlayerState() == PlayerState.LOBBY || playerData.getPlayerState() == PlayerState.SPECTATING)) {
                 switch (itemStack.getType()) {
                     case DIAMOND_SWORD: {
-                        playerData.teleportToFight();
+                        playerData.injectToFight();
                         break;
                     }
                     case BOOK: {
-                        playerData.teleportToKitEditor();
+                        playerData.injectToEditor();
                         break;
                     }
                     case COMPASS: {
@@ -65,7 +65,7 @@ public class PlayerListener implements Listener {
                     case INK_SACK: {
                         EntityHider.showPlayerOnly(player);
                         player.setAllowFlight(false);
-                        playerData.inject();
+                        playerData.injectToLobby();
                         break;
                     }
                 }
@@ -85,7 +85,7 @@ public class PlayerListener implements Listener {
                 }
                 case WOODEN_DOOR: {
                     EntityHider.showPlayerToEveryone(player);
-                    playerData.inject();
+                    playerData.injectToLobby();
                     break;
                 }
             }
@@ -114,7 +114,7 @@ public class PlayerListener implements Listener {
         event.getDrops().clear();
         TaskUtil.runLater(() -> {
             player.spigot().respawn();
-            this.ffaRushPlugin.getPlayer(player).inject();
+            this.ffaRushPlugin.getPlayer(player).injectToLobby();
         }, 5L);
     }
 

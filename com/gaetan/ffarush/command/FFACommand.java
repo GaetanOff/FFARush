@@ -19,7 +19,7 @@ public final class FFACommand {
     private final FFARushPlugin ffaRushPlugin;
 
     /**
-     * Show the global usage message
+     * Show the global usage message.
      *
      * @param context command argument
      */
@@ -29,7 +29,7 @@ public final class FFACommand {
     }
 
     /**
-     * Add new a location to the FFARush
+     * Add new a location to the FFARush.
      *
      * @param context command argument
      */
@@ -43,7 +43,7 @@ public final class FFACommand {
     }
 
     /**
-     * Set the global lobby
+     * Set the global lobby.
      *
      * @param context command argument
      */
@@ -55,7 +55,7 @@ public final class FFACommand {
     }
 
     /**
-     * Set the spectator location
+     * Set the spectator location.
      *
      * @param context command argument
      */
@@ -67,7 +67,7 @@ public final class FFACommand {
     }
 
     /**
-     * Set the kit editor
+     * Set the kit editor.
      *
      * @param context command argument
      */
@@ -79,7 +79,7 @@ public final class FFACommand {
     }
 
     /**
-     * Set the kit inventory
+     * Set the kit inventory.
      *
      * @param context command argument
      */
@@ -97,7 +97,7 @@ public final class FFACommand {
     }
 
     /**
-     * Enable or Disable the builder mode
+     * Enable or Disable the builder mode.
      *
      * @param context command argument
      */
@@ -106,7 +106,7 @@ public final class FFACommand {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() == PlayerState.BUILDING) {
-            playerData.inject();
+            playerData.injectToLobby();
             Message.tell(player, Lang.BUILD_OFF.getText());
         } else {
             this.ffaRushPlugin.getPlayer(player).setPlayerState(PlayerState.BUILDING);
@@ -115,6 +115,11 @@ public final class FFACommand {
         }
     }
 
+    /**
+     * Send the help message.
+     *
+     * @param player player to send the help message
+     */
     private void usage(final Player player) {
         Message.tell(player, new String[]{
                 "",

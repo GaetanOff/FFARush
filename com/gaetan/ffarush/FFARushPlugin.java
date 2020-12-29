@@ -25,6 +25,9 @@ public class FFARushPlugin extends GCore {
     final Map<UUID, PlayerData> players = Maps.newConcurrentMap();
     ManagerHandler managerHandler;
 
+    /**
+     * Same as the classic onEnable.
+     */
     @Override
     protected void onPluginStart() {
         this.managerHandler = new ManagerHandler(this);
@@ -35,21 +38,30 @@ public class FFARushPlugin extends GCore {
         this.registerScoreboard(new Scoreboard(this), 40L);
     }
 
+    /**
+     * Same as the classic onDisable.
+     */
     @Override
     protected void onPluginStop() {
         this.managerHandler.getBlockManager().resetBlock();
     }
 
+    /**
+     * This is trigger when the server finished loading.
+     */
     @Override
     protected void onPluginLoaded() {
         this.getServer().getOnlinePlayers().forEach(player -> {
             final PlayerData playerData = new PlayerData(player, this);
             this.getPlayers().put(player.getUniqueId(), playerData);
             playerData.initialize();
-            playerData.inject();
+            playerData.injectToLobby();
         });
     }
 
+    /**
+     * Register listener.
+     */
     @Override
     protected void registerListener() {
         this.getServer().getPluginManager().registerEvents(new EntityListener(this), this);
@@ -58,6 +70,11 @@ public class FFARushPlugin extends GCore {
         new CustomMoveEvent(this).runTaskTimer(this, 0L, 40L);
     }
 
+    /**
+     * Get a PlayerData of a Player.
+     *
+     * @param player player
+     */
     public PlayerData getPlayer(final Player player) {
         return this.players.get(player.getUniqueId());
     }

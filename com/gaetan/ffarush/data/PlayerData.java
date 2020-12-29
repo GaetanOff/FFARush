@@ -35,6 +35,12 @@ public final class PlayerData {
     PlayerState playerState;
     ItemStack[] customKit;
 
+    /**
+     * Constructor for the PlayerData.
+     *
+     * @param player the object of this player
+     * @param ffaRushPlugin refeference to the main class
+     */
     public PlayerData(final Player player, final FFARushPlugin ffaRushPlugin) {
         this.ffaRushPlugin = ffaRushPlugin;
 
@@ -44,7 +50,10 @@ public final class PlayerData {
         this.customKit = null;
     }
 
-    public void inject() {
+    /**
+     * Inject the player in the lobby.
+     */
+    public void injectToLobby() {
         PlayerUtil.clearInventory(player, true);
 
         this.playerState = PlayerState.LOBBY;
@@ -54,12 +63,18 @@ public final class PlayerData {
         this.teleportToLobby();
     }
 
+    /**
+     * Teleport the player to the lobby.
+     */
     public void teleportToLobby() {
         if (this.ffaRushPlugin.getManagerHandler().getLocationManager().getLobbyLocation() != null)
             this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getLobbyLocation());
     }
 
-    public void teleportToFight() {
+    /**
+     * Inject the player in fight.
+     */
+    public void injectToFight() {
         final LocationManager locationManager = this.ffaRushPlugin.getManagerHandler().getLocationManager();
 
         if (locationManager.getLocationMap().isEmpty()) {
@@ -70,13 +85,23 @@ public final class PlayerData {
         this.playerState = PlayerState.SPAWNING;
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveFightItems(this.player);
         this.ffaRushPlugin.getManagerHandler().getSpawnKillManager().run(this.player);
-        this.player.teleport(locationManager.getLocation(RandomUtil.nextBetween(0, locationManager.getLocation() - 1)));
+        this.teleportToFight(locationManager);
         this.player.setGameMode(GameMode.SURVIVAL);
 
         Message.tell(this.player, Lang.ARENA_JOINED.getText());
     }
 
-    public void teleportToKitEditor() {
+    /**
+     * Teleport the player to the fight arena.
+     */
+    public void teleportToFight(LocationManager locationManager) {
+        this.player.teleport(locationManager.getLocation(RandomUtil.nextBetween(0, locationManager.getLocation() - 1)));
+    }
+
+    /**
+     * Inject the player in the kit editor.
+     */
+    public void injectToEditor() {
         if (this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation() == null) {
             Message.tell(this.player, Lang.NO_EDITOR.getText());
             return;
@@ -84,12 +109,22 @@ public final class PlayerData {
 
         this.playerState = PlayerState.EDITING;
 
-        this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation());
+        this.teleportToKitEditor();
         this.player.setGameMode(GameMode.SURVIVAL);
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveKitEditorItem(this.player);
         EntityHider.hidePlayerToEveryone(this.player);
     }
 
+    /**
+     * Teleport the player to the kit editor.
+     */
+    public void teleportToKitEditor() {
+        this.player.teleport(this.ffaRushPlugin.getManagerHandler().getLocationManager().getKitEditorLocation());
+    }
+
+    /**
+     * Set the player in the spectator mode.
+     */
     public void spectator() {
         if (this.ffaRushPlugin.getManagerHandler().getLocationManager().getSpectatorLocation() == null) {
             Message.tell(this.player, Lang.NO_SPECTATOR.getText());
@@ -106,14 +141,23 @@ public final class PlayerData {
         TaskUtil.run(() -> this.player.setAllowFlight(true));
     }
 
+    /**
+     * Get the deaths of the player.
+     */
     public int getDeaths() {
         return this.player.getStatistic(Statistic.DEATHS);
     }
 
+    /**
+     * Get the kills of the player.
+     */
     public int getKills() {
         return this.player.getStatistic(Statistic.PLAYER_KILLS);
     }
 
+    /**
+     * Get the ratio of the player.
+     */
     public Serializable getRatio() {
         final DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
@@ -126,10 +170,16 @@ public final class PlayerData {
         return "0";
     }
 
+    /**
+     * Save the custom kit of the player.
+     */
     public void save() {
         this.ffaRushPlugin.getServer().getScheduler().runTaskAsynchronously(this.ffaRushPlugin, new SavePlayerConfig(this.ffaRushPlugin, this));
     }
 
+    /**
+     * Load and cache the custom kit of the player.
+     */
     public void initialize() {
         this.ffaRushPlugin.getServer().getScheduler().runTaskAsynchronously(this.ffaRushPlugin, new LoadPlayerConfig(this.ffaRushPlugin, this));
     }

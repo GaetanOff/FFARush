@@ -13,6 +13,9 @@ public final class SavePlayerConfig implements Runnable {
     final FFARushPlugin ffaRushPlugin;
     final PlayerData playerData;
 
+    /**
+     * Runnable to save a player config.
+     */
     @Override
     public void run() {
         if (playerData.getCustomKit() != null) {

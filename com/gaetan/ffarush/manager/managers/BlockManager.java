@@ -21,12 +21,22 @@ import java.util.List;
 public final class BlockManager extends Manager {
     private final List<Block> blockList;
 
+    /**
+     * Constructor for the BlockManager.
+     *
+     * @param handler reference to the ManagerHandler class
+     */
     public BlockManager(final ManagerHandler handler) {
         super(handler);
 
         this.blockList = new ArrayList<>();
     }
 
+    /**
+     * Add a block in the delete list.
+     *
+     * @param block block added
+     */
     public void addBlock(final Block block) {
         this.getBlockList().add(block);
         TaskUtil.runLater(() -> {
@@ -37,14 +47,27 @@ public final class BlockManager extends Manager {
         }, 600L);
     }
 
+    /**
+     * Remove a block from the delete list.
+     *
+     * @param block block removed
+     */
     public void removeBlock(final Block block) {
         this.getBlockList().remove(block);
     }
 
+    /**
+     * Reset all the block in the list.
+     */
     public void resetBlock() {
         blockList.forEach(block -> block.setType(Material.AIR));
     }
 
+    /**
+     * Spawn an custom tnt.
+     *
+     * @param target real tnt replaced by the custom tnt
+     */
     public void spawnTnt(final Block target) {
         final Location location = target.getLocation().add(0.5, 0.25, 0.5);
         final TNTPrimed tnt = (TNTPrimed) target.getWorld().spawnEntity(location, EntityType.PRIMED_TNT);

@@ -14,6 +14,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 public final class CustomMoveEvent extends BukkitRunnable {
     private final FFARushPlugin ffaRushPlugin;
 
+    /**
+     * Runnable to replace the Bukkit Move Event.
+     */
     @Override
     public void run() {
         this.ffaRushPlugin.getServer().getOnlinePlayers().forEach(player -> {
@@ -25,7 +28,7 @@ public final class CustomMoveEvent extends BukkitRunnable {
                 if (playerInListData.getPlayerState() == PlayerState.FIGHTING) {
                     if (playerInList.getLocation().getY() < 29) {
                         playerData.getVoidPlayers().remove(playerInList);
-                        playerInListData.inject();
+                        playerInListData.injectToLobby();
                         Message.tellToEveryone(Message.RED + playerInList.getName() + Message.GRAY + Lang.VOID_DEATH.getText() + Message.GREEN + player.getName() + Message.GRAY + ".");
                         player.setStatistic(Statistic.PLAYER_KILLS, player.getStatistic(Statistic.PLAYER_KILLS) + 1);
                         player.setHealth(20.0);
@@ -41,7 +44,7 @@ public final class CustomMoveEvent extends BukkitRunnable {
 
             if (playerData.getPlayerState() == PlayerState.FIGHTING) {
                 if (player.getLocation().getY() < 29) {
-                    playerData.inject();
+                    playerData.injectToLobby();
                     Message.tellToEveryone(Message.RED + player.getName() + Message.GRAY + Lang.VOID_DEATH_ALONE.getText());
                 }
             }

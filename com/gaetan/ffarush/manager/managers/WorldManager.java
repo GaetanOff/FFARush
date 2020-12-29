@@ -9,12 +9,20 @@ import org.bukkit.entity.Item;
 
 public final class WorldManager extends Manager {
 
+    /**
+     * Constructor for the WorldManager.
+     *
+     * @param handler reference to the ManagerHandler class
+     */
     public WorldManager(final ManagerHandler handler) {
         super(handler);
 
         this.setupWorld();
     }
 
+    /**
+     * Setup all worlds for better optimization.
+     */
     private void setupWorld() {
         Bukkit.getWorlds().forEach(world -> {
             world.setGameRuleValue("doDaylightCycle", "false");

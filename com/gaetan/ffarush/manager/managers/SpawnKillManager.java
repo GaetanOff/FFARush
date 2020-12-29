@@ -13,12 +13,22 @@ import java.util.concurrent.TimeUnit;
 public final class SpawnKillManager extends Manager {
     private static WeakHashMap<Player, Long> cooldown;
 
+    /**
+     * Constructor for the SpawnKillManager.
+     *
+     * @param handler reference to the ManagerHandler class
+     */
     public SpawnKillManager(final ManagerHandler handler) {
         super(handler);
 
         SpawnKillManager.cooldown = new WeakHashMap<>();
     }
 
+    /**
+     * Run the anti-spawnkill on a player.
+     *
+     * @param player player to run the anti-spawnkill
+     */
     public void run(final Player player) {
         final PlayerData playerData = this.handler.getFfaRushPlugin().getPlayer(player);
 
@@ -39,10 +49,20 @@ public final class SpawnKillManager extends Manager {
         }.runTaskTimer(this.handler.getFfaRushPlugin(), 0L, 2L);
     }
 
+    /**
+     * Get if the player has the anti-spawnkill.
+     *
+     * @param player player to get the anti-spawnkill activity
+     */
     public static boolean isCooldownActive(final Player player) {
         return SpawnKillManager.cooldown.containsKey(player) && SpawnKillManager.cooldown.get(player) > System.currentTimeMillis();
     }
 
+    /**
+     * Remove the player anti-spawnkill.
+     *
+     * @param player player to remove the anti-spawnkill
+     */
     public static void removeCooldown(final Player player) {
         if (SpawnKillManager.cooldown.containsKey(player)) {
             SpawnKillManager.cooldown.remove(player);

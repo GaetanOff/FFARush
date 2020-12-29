@@ -19,7 +19,7 @@ public final class StatsCommand {
     private final FFARushPlugin ffaRushPlugin;
 
     /**
-     * Show the stats of a player
+     * Show the stats of a player.
      *
      * @param context command argument
      */
@@ -38,17 +38,12 @@ public final class StatsCommand {
         }
     }
 
-    /*@Command(name = "near", permission = "near.use", target = CommandTarget.PLAYER)
-    public void handleCommand(final Context<ConsoleCommandSender> context, int blocks, boolean state) {
-        Player player = (Player) context.getSender();
-        if (state) {
-            player.getNearbyEntities(blocks, blocks, blocks)
-                    .stream()
-                    .filter(entity -> entity instanceof Player)
-                    .forEach(entity -> Message.tell(player, "-> " + entity.getName()));
-        }
-    }*/
-
+    /**
+     * Send the stats of a specific player.
+     *
+     * @param player player to send the stats
+     * @param playerData target who stats requested
+     */
     private void statsMessage(final Player player, final PlayerData playerData) {
         Message.tell(player, new String[]{
                 "",

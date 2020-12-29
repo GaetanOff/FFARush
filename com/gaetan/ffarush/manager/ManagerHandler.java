@@ -20,6 +20,11 @@ public class ManagerHandler {
 
     final GuiManager guiManager;
 
+    /**
+     * Register all the manager.
+     *
+     * @param ffaRushPlugin reference to the main class
+     */
     public ManagerHandler(final FFARushPlugin ffaRushPlugin) {
         this.ffaRushPlugin = ffaRushPlugin;
         this.itemManager = new ItemManager(this);

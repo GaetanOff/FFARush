@@ -8,14 +8,18 @@ import com.gaetan.ffarush.listener.PlayerListener;
 import com.gaetan.ffarush.manager.ManagerHandler;
 import com.gaetan.ffarush.data.PlayerData;
 import com.gaetan.ffarush.runnable.CustomMoveEvent;
+import com.gaetan.ffarush.runnable.TntExplode;
 import com.gaetan.ffarush.scoreboard.Scoreboard;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.gaetan.ffarush.command.StatsCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -23,6 +27,7 @@ import java.util.UUID;
 @Getter
 public class FFARushPlugin extends GCore {
     final Map<UUID, PlayerData> players = Maps.newConcurrentMap();
+    final List<TNTPrimed> tnt = Lists.newLinkedList();
     ManagerHandler managerHandler;
 
     /**
@@ -60,7 +65,7 @@ public class FFARushPlugin extends GCore {
     }
 
     /**
-     * Register listener.
+     * Register listener and task.
      */
     @Override
     protected void registerListener() {
@@ -68,6 +73,7 @@ public class FFARushPlugin extends GCore {
         this.getServer().getPluginManager().registerEvents(new BlockListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         new CustomMoveEvent(this).runTaskTimer(this, 0L, 40L);
+        new TntExplode(this).runTaskTimer(this, 0L, 1L);
     }
 
     /**

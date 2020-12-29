@@ -13,6 +13,11 @@ import org.bukkit.entity.Player;
 
 @AllArgsConstructor
 public final class StatsCommand {
+    /**
+     * Constructor for the StatsCommand class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
     private final FFARushPlugin ffaRushPlugin;
 
     /**

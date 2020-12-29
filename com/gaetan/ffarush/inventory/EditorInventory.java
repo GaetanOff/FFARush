@@ -14,6 +14,11 @@ import org.bukkit.inventory.ItemStack;
 
 @AllArgsConstructor
 public final class EditorInventory implements GuiBuilder {
+    /**
+     * Constructor for the EditorInventory class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
     private final FFARushPlugin ffaRushPlugin;
 
     /**

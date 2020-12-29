@@ -16,6 +16,11 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 
 @AllArgsConstructor
 public class EntityListener implements Listener {
+    /**
+     * Constructor for the EntityListener class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
     private final FFARushPlugin ffaRushPlugin;
 
     @EventHandler

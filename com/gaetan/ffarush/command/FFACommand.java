@@ -16,6 +16,11 @@ import org.bukkit.entity.Player;
 
 @AllArgsConstructor
 public final class FFACommand {
+    /**
+     * Constructor for the FFACommand class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
     private final FFARushPlugin ffaRushPlugin;
 
     /**

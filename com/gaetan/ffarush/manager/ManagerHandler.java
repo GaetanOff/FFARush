@@ -21,6 +21,7 @@ public class ManagerHandler {
     final GuiManager guiManager;
 
     /**
+     * Constructor for the ManagerHandler class.
      * Register all the manager.
      *
      * @param ffaRushPlugin reference to the main class

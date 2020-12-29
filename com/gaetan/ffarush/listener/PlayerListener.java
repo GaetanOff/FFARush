@@ -23,6 +23,11 @@ import org.bukkit.inventory.ItemStack;
 
 @AllArgsConstructor
 public class PlayerListener implements Listener {
+    /**
+     * Constructor for the PlayerListener class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
     private final FFARushPlugin ffaRushPlugin;
 
     @EventHandler

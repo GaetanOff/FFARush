@@ -14,6 +14,11 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 @AllArgsConstructor
 public class BlockListener implements Listener {
+    /**
+     * Constructor for the BlockListener class.
+     *
+     * @param ffaRushPlugin reference to te main class
+     */
     private final FFARushPlugin ffaRushPlugin;
 
     @EventHandler

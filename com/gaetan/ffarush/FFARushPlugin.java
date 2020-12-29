@@ -21,12 +21,11 @@ import org.bukkit.entity.TNTPrimed;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 public class FFARushPlugin extends GCore {
-    final Map<UUID, PlayerData> players = Maps.newConcurrentMap();
+    final Map<Player, PlayerData> players = Maps.newConcurrentMap();
     final List<TNTPrimed> tnt = Lists.newLinkedList();
     ManagerHandler managerHandler;
 
@@ -58,7 +57,7 @@ public class FFARushPlugin extends GCore {
     protected void onPluginLoaded() {
         this.getServer().getOnlinePlayers().forEach(player -> {
             final PlayerData playerData = new PlayerData(player, this);
-            this.getPlayers().put(player.getUniqueId(), playerData);
+            this.getPlayers().put(player, playerData);
             playerData.initialize();
             playerData.injectToLobby();
         });
@@ -82,6 +81,6 @@ public class FFARushPlugin extends GCore {
      * @param player player
      */
     public PlayerData getPlayer(final Player player) {
-        return this.players.get(player.getUniqueId());
+        return this.players.get(player);
     }
 }

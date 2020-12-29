@@ -5,14 +5,11 @@ import com.gaetan.api.command.utils.command.Context;
 import com.gaetan.api.command.utils.target.CommandTarget;
 import com.gaetan.api.message.Message;
 import com.gaetan.ffarush.FFARushPlugin;
-import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.data.PlayerData;
+import com.gaetan.ffarush.enums.Lang;
 import lombok.AllArgsConstructor;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-
-import java.util.List;
 
 @AllArgsConstructor
 public final class StatsCommand {

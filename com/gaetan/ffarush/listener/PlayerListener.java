@@ -29,7 +29,7 @@ public class PlayerListener implements Listener {
     public void onJoin(final PlayerJoinEvent event) {
         final Player player = event.getPlayer();
         final PlayerData playerData = new PlayerData(player, this.ffaRushPlugin);
-        this.ffaRushPlugin.getPlayers().put(player.getUniqueId(), playerData);
+        this.ffaRushPlugin.getPlayers().put(player, playerData);
 
         playerData.initialize();
         playerData.injectToLobby();
@@ -37,7 +37,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onQuit(final PlayerQuitEvent event) {
-        this.ffaRushPlugin.getPlayers().remove(event.getPlayer().getUniqueId()).save();
+        this.ffaRushPlugin.getPlayers().remove(event.getPlayer()).save();
     }
 
     @EventHandler

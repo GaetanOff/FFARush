@@ -6,7 +6,6 @@ import com.gaetan.ffarush.enums.Lang;
 import com.gaetan.ffarush.enums.PlayerState;
 import com.gaetan.ffarush.data.PlayerData;
 import lombok.AllArgsConstructor;
-import org.bukkit.Bukkit;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;

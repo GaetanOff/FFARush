@@ -34,7 +34,7 @@ public final class FFACommand {
      * @param context command argument
      */
     @Command(name = "ffarush.addloc")
-    public void handleCommandChild(final Context<ConsoleCommandSender> context) {
+    public void handleSubCommand_AddLoc(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final LocationManager locationManager = this.ffaRushPlugin.getManagerHandler().getLocationManager();
         Message.tell(player, Lang.ADD_POS.getText().replace("%position%", String.valueOf(locationManager.getLocation())));
@@ -48,7 +48,7 @@ public final class FFACommand {
      * @param context command argument
      */
     @Command(name = "ffarush.set.lobby")
-    public void handleCommandChild2(final Context<ConsoleCommandSender> context) {
+    public void handleSubCommand_Set_Lobby(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setLobbyLocation(player.getLocation());
         Message.tell(player, Lang.LOBBY_SET.getText());
@@ -60,7 +60,7 @@ public final class FFACommand {
      * @param context command argument
      */
     @Command(name = "ffarush.set.spectator")
-    public void handleCommandChild3(final Context<ConsoleCommandSender> context) {
+    public void handleSubCommand_Set_Spectator(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setSpectatorLocation(player.getLocation());
         Message.tell(player, Lang.LOBBY_SET.getText());
@@ -72,7 +72,7 @@ public final class FFACommand {
      * @param context command argument
      */
     @Command(name = "ffarush.set.editor")
-    public void handleCommandChild4(final Context<ConsoleCommandSender> context) {
+    public void handleSubCommand_Set_Editor(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         this.ffaRushPlugin.getManagerHandler().getLocationManager().setKitEditorLocation(player.getLocation());
         Message.tell(player, Lang.EDITOR_SET.getText());
@@ -84,7 +84,7 @@ public final class FFACommand {
      * @param context command argument
      */
     @Command(name = "ffarush.set.inventory")
-    public void handleCommandChild5(final Context<ConsoleCommandSender> context) {
+    public void handleSubCommand_Set_Inventory(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() != PlayerState.BUILDING) {
@@ -102,7 +102,7 @@ public final class FFACommand {
      * @param context command argument
      */
     @Command(name = "ffarush.builder")
-    public void handleCommandChild6(final Context<ConsoleCommandSender> context) {
+    public void handleSubCommand_Builder(final Context<ConsoleCommandSender> context) {
         final Player player = (Player) context.getSender();
         final PlayerData playerData = this.ffaRushPlugin.getPlayer(player);
         if (playerData.getPlayerState() == PlayerState.BUILDING) {

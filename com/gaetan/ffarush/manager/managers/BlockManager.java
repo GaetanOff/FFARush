@@ -3,7 +3,10 @@ package com.gaetan.ffarush.manager.managers;
 import com.gaetan.api.runnable.TaskUtil;
 import com.gaetan.ffarush.manager.Manager;
 import com.gaetan.ffarush.manager.ManagerHandler;
+import com.google.common.collect.Lists;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -14,9 +17,11 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 public final class BlockManager extends Manager {
-    private final List<Block> blockList;
+    final List<Block> blockList;
+    final List<TNTPrimed> tnt;
 
     /**
      * Constructor for the BlockManager.
@@ -27,6 +32,7 @@ public final class BlockManager extends Manager {
         super(handler);
 
         this.blockList = new ArrayList<>();
+        this.tnt = Lists.newLinkedList();
     }
 
     /**
@@ -73,6 +79,6 @@ public final class BlockManager extends Manager {
         tnt.teleport(location);
 
         //Add the counter on the tnt
-        this.handler.getFfaRushPlugin().getTnt().add(tnt);
+        this.getTnt().add(tnt);
     }
 }

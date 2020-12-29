@@ -39,13 +39,17 @@ public class PlayerListener implements Listener {
         final PlayerData playerData = new PlayerData(player, this.ffaRushPlugin);
         this.ffaRushPlugin.getPlayers().put(player, playerData);
 
+        event.setJoinMessage(Message.GREEN + " + " + Message.GRAY + player.getName());
         playerData.initialize();
         playerData.injectToLobby();
     }
 
     @EventHandler
     public void onQuit(final PlayerQuitEvent event) {
-        this.ffaRushPlugin.getPlayers().remove(event.getPlayer()).save();
+        final Player player = event.getPlayer();
+
+        event.setQuitMessage(Message.RED + " - " + Message.GRAY + player.getName());
+        this.ffaRushPlugin.getPlayers().remove(player).save();
     }
 
     @EventHandler
@@ -124,6 +128,11 @@ public class PlayerListener implements Listener {
             player.spigot().respawn();
             this.ffaRushPlugin.getPlayer(player).injectToLobby();
         }, 5L);
+    }
+
+    @EventHandler
+    public void onAsyncChat(final AsyncPlayerChatEvent e) {
+        e.setFormat(Message.AQUA + "%1$s" + Message.GRAY + ": " + Message.WHITE + "%2$s");
     }
 
     @EventHandler

@@ -15,7 +15,7 @@ public final class CustomMoveEvent extends BukkitRunnable {
     private final FFARushPlugin ffaRushPlugin;
 
     /**
-     * Runnable to replace the Bukkit Move Event.
+     * BukkitRunnable to replace the Bukkit Move Event.
      */
     @Override
     public void run() {

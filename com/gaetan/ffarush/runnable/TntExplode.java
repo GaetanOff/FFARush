@@ -15,6 +15,9 @@ public class TntExplode extends BukkitRunnable {
     final FFARushPlugin ffaRushPlugin;
     final DecimalFormat format = new DecimalFormat("0.0");
 
+    /**
+     * BukkitRunnable to put a counter on the custom tnt.
+     */
     @Override
     public void run() {
         this.ffaRushPlugin.getTnt().forEach(tntPrimed -> {

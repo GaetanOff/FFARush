@@ -34,6 +34,8 @@ public final class PlayerData {
     List<Player> voidPlayers;
     PlayerState playerState;
     ItemStack[] customKit;
+    boolean spawnKill;
+    long spawnKillLong;
 
     /**
      * Constructor for the PlayerData.
@@ -84,7 +86,6 @@ public final class PlayerData {
 
         this.playerState = PlayerState.SPAWNING;
         this.ffaRushPlugin.getManagerHandler().getItemManager().giveFightItems(this.player);
-        this.ffaRushPlugin.getManagerHandler().getSpawnKillManager().run(this.player);
         this.teleportToFight(locationManager);
         this.player.setGameMode(GameMode.SURVIVAL);
 
@@ -168,6 +169,32 @@ public final class PlayerData {
             return String.valueOf(this.getKills());
 
         return "0";
+    }
+
+    /**
+     * Active the anti-spawnkill to the player.
+     */
+    public void setAntiSpawnKill() {
+        this.spawnKill = true;
+        this.spawnKillLong = System.currentTimeMillis() + 3 * 1000;
+    }
+
+    /**
+     * Get if the player has the anti-spawnkill.
+     */
+    public boolean isAntiSpawnKill() {
+        return this.spawnKillLong > System.currentTimeMillis();
+    }
+
+    /**
+     * Remove the player anti-spawnkill.
+     */
+    public void removeAntiSpawnKill() {
+        if (this.spawnKill) {
+            this.spawnKill = false;
+            player.setLevel(0);
+            player.setExp(0.0f);
+        }
     }
 
     /**

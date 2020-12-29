@@ -83,7 +83,7 @@ public final class ItemManager extends Manager {
     public void giveFightItems(final Player player) {
         final PlayerData playerData = this.handler.getFfaRushPlugin().getPlayer(player);
 
-        this.handler.getSpawnKillManager().run(player);
+        playerData.setAntiSpawnKill();
 
         PlayerUtil.clearInventory(player, true);
         player.getInventory().setArmorContents(this.armorContents);

@@ -8,8 +8,8 @@ import com.gaetan.ffarush.listener.BlockListener;
 import com.gaetan.ffarush.listener.EntityListener;
 import com.gaetan.ffarush.listener.PlayerListener;
 import com.gaetan.ffarush.manager.ManagerHandler;
-import com.gaetan.ffarush.runnable.CustomMoveEvent;
-import com.gaetan.ffarush.runnable.TntExplode;
+import com.gaetan.ffarush.runnable.MoveRunnable;
+import com.gaetan.ffarush.runnable.FightRunnable;
 import com.gaetan.ffarush.scoreboard.Scoreboard;
 import com.google.common.collect.Maps;
 import lombok.AccessLevel;
@@ -68,8 +68,8 @@ public class FFARushPlugin extends GCore {
         new BlockListener(this);
         new EntityListener(this);
         new PlayerListener(this);
-        new CustomMoveEvent(this);
-        new TntExplode(this);
+        new MoveRunnable(this);
+        new FightRunnable(this);
     }
 
     /**

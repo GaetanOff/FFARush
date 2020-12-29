@@ -3,7 +3,6 @@ package com.gaetan.ffarush.listener;
 import com.gaetan.api.message.Message;
 import com.gaetan.ffarush.FFARushPlugin;
 import com.gaetan.ffarush.enums.Lang;
-import com.gaetan.ffarush.manager.managers.SpawnKillManager;
 import com.gaetan.ffarush.data.PlayerData;
 import com.gaetan.ffarush.enums.PlayerState;
 import org.bukkit.entity.Player;
@@ -50,7 +49,7 @@ public class EntityListener implements Listener {
             if (damagerData.getPlayerState() == PlayerState.FIGHTING)
                 damagerData.getVoidPlayers().add(player);
 
-            if (SpawnKillManager.isCooldownActive(damager) || SpawnKillManager.isCooldownActive(player)) {
+            if (damagerData.isSpawnKill() || this.ffaRushPlugin.getPlayer(player).isSpawnKill()) {
                 event.setCancelled(true);
                 Message.tell(damager, Lang.ANTI_SPAWNKILL.getText());
             }

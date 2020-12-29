@@ -9,7 +9,7 @@ import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public final class CustomMoveEvent extends BukkitRunnable {
+public final class MoveRunnable extends BukkitRunnable {
     private final FFARushPlugin ffaRushPlugin;
 
     /**
@@ -17,7 +17,7 @@ public final class CustomMoveEvent extends BukkitRunnable {
      *
      * @param ffaRushPlugin reference to te main class
      */
-    public CustomMoveEvent(final FFARushPlugin ffaRushPlugin) {
+    public MoveRunnable(final FFARushPlugin ffaRushPlugin) {
         this.ffaRushPlugin  = ffaRushPlugin;
         this.runTaskTimer(this.ffaRushPlugin, 0L, 40L);
     }

@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class TntExplode extends BukkitRunnable {
+public final class TntExplode extends BukkitRunnable {
     final FFARushPlugin ffaRushPlugin;
     final DecimalFormat format = new DecimalFormat("0.0");
 

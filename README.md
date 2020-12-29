@@ -5,7 +5,7 @@ FFARush plugin
 
 Information
 ============
-> This plugin is using my own plugin framework (GCore at the moment it is not available to the public but soon it will be). And some cool technologies.
+> This plugin is using my own plugin framework, and some cool technologies. It's compatible from 1.7 to 1.16.
 
 Commands
 ============

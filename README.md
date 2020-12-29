@@ -3,6 +3,10 @@ FFARush plugin
 
 > Plugin designed for a customer.
 
+Information
+============
+> This plugin is using my own plugin framework (GCore at the moment it is not available to the public but soon it will be). And some cool technologies.
+
 Commands
 ============
 

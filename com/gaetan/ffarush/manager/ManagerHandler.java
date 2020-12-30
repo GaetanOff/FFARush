@@ -8,16 +8,16 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Getter
 public class ManagerHandler {
-    final FFARushPlugin ffaRushPlugin;
-    final ItemManager itemManager;
-    final BlockManager blockManager;
-    final LocationManager locationManager;
-    final WorldManager worldManager;
+    FFARushPlugin ffaRushPlugin;
+    ItemManager itemManager;
+    BlockManager blockManager;
+    LocationManager locationManager;
+    WorldManager worldManager;
 
-    final GuiManager guiManager;
+    GuiManager guiManager;
 
     /**
      * Constructor for the ManagerHandler class.

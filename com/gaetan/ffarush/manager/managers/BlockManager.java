@@ -17,11 +17,11 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Getter
 public final class BlockManager extends Manager {
-    final List<Block> blockList;
-    final List<TNTPrimed> tnt;
+    List<Block> blockList;
+    List<TNTPrimed> tnt;
 
     /**
      * Constructor for the BlockManager.

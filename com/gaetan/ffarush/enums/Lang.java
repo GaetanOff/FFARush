@@ -36,10 +36,10 @@ public enum Lang {
     KILLS(Message.AQUA + "Kills" + Message.GRAY + " » " + Message.WHITE),
     DEATHS(Message.AQUA + "Deaths" + Message.GRAY + " » " + Message.WHITE),
     RATIO(Message.AQUA + "Ratio" + Message.GRAY + " » " + Message.WHITE),
-    SB_TITLE(Message.DARK_AQUA + "Prathen" + Message.AQUA + " FFARush"),
+    SB_TITLE(Message.DARK_AQUA + "FFARush"),
     SB_BAR(Message.GRAY + Message.STRIKE_THROUGH + "--------------------"),
     SB_PLAYERS(Message.AQUA + "Players" + Message.GRAY + " » " + Message.WHITE),
-    SB_INFO(Message.GRAY + Message.ITALIC + "www.prathen.eu");
+    SB_INFO(Message.GRAY + Message.ITALIC + "www.ffarush.eu");
 
     private final String text;
 

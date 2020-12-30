@@ -23,6 +23,7 @@ import java.util.Map;
 @Getter
 public class FFARushPlugin extends GCore {
     final Map<Player, PlayerData> players = Maps.newConcurrentMap();
+
     ManagerHandler managerHandler;
 
     /**

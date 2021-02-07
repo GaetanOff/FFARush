@@ -1,6 +1,6 @@
 package com.gaetan.ffarush;
 
-import com.gaetan.api.plugin.GCore;
+import com.gaetan.api.plugin.SimplePlugin;
 import com.gaetan.ffarush.command.FFACommand;
 import com.gaetan.ffarush.command.StatsCommand;
 import com.gaetan.ffarush.data.PlayerData;
@@ -8,8 +8,8 @@ import com.gaetan.ffarush.listener.BlockListener;
 import com.gaetan.ffarush.listener.EntityListener;
 import com.gaetan.ffarush.listener.PlayerListener;
 import com.gaetan.ffarush.manager.ManagerHandler;
-import com.gaetan.ffarush.runnable.MoveRunnable;
 import com.gaetan.ffarush.runnable.FightRunnable;
+import com.gaetan.ffarush.runnable.MoveRunnable;
 import com.gaetan.ffarush.scoreboard.Scoreboard;
 import com.google.common.collect.Maps;
 import lombok.AccessLevel;
@@ -21,9 +21,8 @@ import java.util.Map;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
-public class FFARushPlugin extends GCore {
+public class FFARushPlugin extends SimplePlugin {
     final Map<Player, PlayerData> players = Maps.newConcurrentMap();
-
     ManagerHandler managerHandler;
 
     /**

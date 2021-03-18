@@ -1,5 +1,6 @@
 package com.gaetan.ffarush;
 
+import com.gaetan.api.annotation.GaetanApplication;
 import com.gaetan.api.plugin.SimplePlugin;
 import com.gaetan.ffarush.command.FFACommand;
 import com.gaetan.ffarush.command.StatsCommand;
@@ -21,6 +22,8 @@ import java.util.Map;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
+
+@GaetanApplication(name = "FFARush", version = "1.0", authors = "Gaetan_Off")
 public class FFARushPlugin extends SimplePlugin {
     final Map<Player, PlayerData> players = Maps.newConcurrentMap();
     ManagerHandler managerHandler;

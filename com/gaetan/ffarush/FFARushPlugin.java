@@ -23,7 +23,7 @@ import java.util.Map;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 
-@GaetanApplication(name = "FFARush", version = "1.0", authors = "Gaetan_Off")
+@GaetanApplication(name = "FFARush", authors = "GaetanOff", version = "1.0", main = "com.gaetan.ffarush.FFARushPlugin", depend = "")
 public class FFARushPlugin extends SimplePlugin {
     final Map<Player, PlayerData> players = Maps.newConcurrentMap();
     ManagerHandler managerHandler;
